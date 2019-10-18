@@ -1,0 +1,696 @@
+<script type="text/javascript"> //모바일 접속
+	
+	var mobileKeyWords = new Array('iPhone', 'iPod', 'BlackBerry', 'Android', 'Windows CE', 'LG', 'MOT', 'SAMSUNG', 'SonyEricsson');
+	for (var word in mobileKeyWords){
+	    if (navigator.userAgent.match(mobileKeyWords[word]) != null){
+	        location.href = "https://lapuger.github.io/suwonlib/m.guide01_01.html";
+	        break;
+	    }
+	}
+	
+</script>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<!--------------------------meta-------------------------->
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<meta name="keword" content="검색어">
+		<meta name="description" content="사이트소개">
+
+	<!--------------------------script-------------------------->
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+		<script type="text/javascript">/**********주 메뉴 gnb 슬라이드 다운**********/
+			$(function(){
+				$('.sub_gnb').hide();
+				$('.sub_gnb ul').eq($(this).index()).css({'background-color':'#fff'});
+				$('.sub_gnb ul').mouseenter(function(){
+					$(this).css({'background-color':'#f8f8f8'});
+					$('.gnb li').eq($(this).index()).css({'border-bottom':'5px solid #c68335'});
+				}).mouseleave(function(){
+					$(this).css({'background-color':'#fff'});
+					$('.gnb li').eq($(this).index()).css({'border-bottom':'5px solid transparent'});
+					$('.gnb .select').css({'border-bottom':'5px solid #c68335'});
+				});
+				$('.gnb li').mouseenter(function(){
+					$(this).css({'border-bottom':'5px solid #c68335'});
+					$('.sub_gnb').stop().slideDown();
+					$('.sub_gnb ul').eq($(this).index()).css({'background-color':'#f8f8f8'});					
+				}).mouseleave(function(){
+					$(this).css({'border-bottom':'5px solid transparent'});
+					$('.sub_gnb').stop().slideUp();
+					$('.sub_gnb ul').eq($(this).index()).css({'background-color':'#fff'});
+					$('.gnb .select').css({'border-bottom':'5px solid #c68335'});
+				});	
+				$('.sub_gnb').mouseenter(function(){	
+					$('.sub_gnb').stop().slideDown();
+					}).mouseleave(function(){	
+					$('.sub_gnb').stop().slideUp();	
+				});			
+			});
+		</script>
+
+		<script type="text/javascript">/**********작은 메뉴 snb 드롭 다운**********/
+			$(function(){				
+				$('.dropdown ul').hide();
+				$('.dropdown').mouseenter(function(){					
+					$(this).find('ul').stop().slideDown().css({
+						'border':'1px solid #777','border-radius':'6px'
+					})
+				}).mouseleave(function(){
+					$(this).css({'border':'1px solid transparent'});
+					$(this).find('ul').stop().slideUp();
+				});
+			});			
+		</script>	
+
+		<script type="text/javascript">/**********tab div 넘기기**********/
+			$(function(){
+				$('.block div').hide();
+				$('.block div').first().show();
+				$('#tab li:first-child').addClass('on');			
+				$('#tab li').click(function(){
+					$('.block div').hide();
+					$('#tab li').removeClass('on');
+					$(this).addClass('on');
+					$('.block div').eq($(this).index()).show();				
+				});
+			});
+		</script>
+
+		<script type="text/javascript">/**********dl 슬라이드 다운**********/
+			$(function(){
+				$('.guide dd').hide();
+				$('div:first-child').find('dt').first().css({'font-weight':'bold'});
+				$('div:first-child').find('dd').first().show();				
+				$('div dt').click(function(){					
+					$('.guide dd').slideUp()
+					$('.guide dt').css({'font-weight':'normal'});
+					$(this).css({'font-weight':'bold'});
+					$(this).next().slideDown();
+				});
+			});
+		</script>
+
+		<script type="text/javascript"> /**********footer banner 넘기기**********/
+   $(document).ready(function(){ 
+        var list = $("#banner-slide");
+        var showNum = 12;
+        var num = 0;
+        var total = $(">li", list).length;
+        var liWidth = $("li:first", list).width();
+        var copyObj = $(">li:lt("+showNum+")", list).clone();
+        list.append(copyObj);
+        $("#right-f").on("click", function(){
+            if(num == total){ 
+                num = 0; 
+                list.css("margin-left",num); 
+            }
+            num++; 
+            list.stop().animate({marginLeft:-liWidth*num+"px"},500);
+            return false;
+        });
+        
+        
+        $("#left-f").on("click", function(){
+          if(num == 0){    
+              num = total; 
+              list.css("margin-left", -num*liWidth+"px");
+          }
+          num--;
+          list.stop().animate({marginLeft:-liWidth*num+"px"},500);
+          return false;
+        });
+    });  
+	</script>
+
+	<!--------------------------link-------------------------->
+		<link rel="icon" type="image/x-icon" href="images/www.png"><!--인터넷창에 표시되는 로고 이미지-->
+		<link rel="stylesheet" type="text/css" href="css/guide01.css">
+		<link rel="stylesheet" type="text/css" href="fontello/css/fontello.css">
+
+	<!--------------------------style-------------------------->
+		<style type="text/css">
+			* {margin:0; padding:0; box-sizing:border-box;}
+			body {font:normal 16px '나눔바른고딕'; color:#222; line-height:1.8;}
+			/*body::-webkit-scrollbar {display: none;}*/
+			img {vertical-align:top;}
+			a{text-decoration:none;}
+			li{list-style:none;}						
+			.gnb li.select{border-bottom:5px solid #c68335;}
+
+			#tab li.on{background-color:#c78435;}
+			#control li.select{background-color:#222; color:#fff;}
+		</style>
+
+	<!--------------------------font-------------------------->
+		<style>
+			@font-face {
+			  font-family: KPBatang;
+			  src: url(font/KoPubWorldBatangMedium.woff);
+			  src: url(font/KOPUBWORLD BATANG MEDIUM.TTF.eot);
+			}
+			@font-face {
+			  font-family: KPDotum;
+			  src: url(font/KoPubWorldDotumMedium.woff);
+			  src: url(font/KOPUBWORLD DOTUM MEDIUM.TTF.eot);
+			}
+		</style>
+
+	<title>중앙도서관</title>
+</head>
+
+<body>
+	<div id="wrapper">
+		<header>
+			<div class="hnb">
+				<ul >
+					<li><a href="#">책나루(무인) 도서관</a></li>
+					<li><a href="#">희망도서 서비스</a></li>
+					<li><a href="#">자원봉사 신청</a></li>
+					<li><a href="#">디지털코너 예약</a></li>
+					<li><a href="#">도서관 체험교실</a></li>
+					<li><a href="#">사이트 맵</a></li>
+				</ul>
+			</div>
+			<div class="snb">
+				<h1><a href="index.html"><img src="images/logo_jlib.gif" alt="홈" title="홈"></a></h1>
+				<form>
+					<input type="text">
+					<button class="icon-search"></button>
+				</form>
+				<ul class="lnb">
+					<li><a href="#">로그인</a></li>
+					<li><a href="#">회원가입</a></li>					
+					<li class="dropdown"><a href="#">
+						SNS<span class="icon-down-open-mini">&nbsp;</span>
+						<ul>
+						  <li><a href="#">페이스북</a></li>
+						  <li><a href="#">트위터</a></li>
+						  <li><a href="#">인스타그램</a></li>
+					 </ul>
+					</a></li>
+					<li class="dropdown"><a href="#">
+					Language<span class="icon-down-open-mini">&nbsp;</span>
+					<ul>
+						 <li><a href="#">한국어</a></li>
+						 <li><a href="#">영어</a></li>
+					</ul>
+					</a></li>												
+				</ul>								
+			</div>
+			<div>
+				<ol class="gnb">
+					<li><a href="#">자료 검색</a></li>
+					<li><a href="#">소통·참여</a></li>
+					<li class="select"><a href="#">도서관 이용</a></li>
+					<li><a href="elibrary01.html">전자도서관</a></li>
+					<li><a href="#">도서관 소식</a></li>
+					<li><a href="#">도서관 소개</a></li>
+				</ol>
+				<div class="sub_gnb">
+					<ul class="s_1">
+						<li><a href="#">시립도서관 검색</a></li>
+						<li><a href="#">지역도서관 검색</a></li>
+						<li><a href="#">WEB-DB</a></li>
+						<li><a href="search04.html">책! 책! 책!</a></li>
+					</ul>
+					<ul class="s_2">
+						<li><a href="comu01.html">독서문화활동</a></li>
+						<li><a href="#">자주하는 질문</a></li>
+						<li><a href="#">커뮤니티</a></li>
+						<li><a href="#">납본·기증</a></li>
+						<li><a href="#">신청</a></li>
+						<li><a href="#">설문조사</a></li>
+					</ul>
+					<ul class="s_3">
+						<li><a href="guide01.html">이용 안내</a></li>
+						<li><a href="#">자료실 이용</a></li>
+						<li><a href="#">도서관 서비스</a></li>
+						<li><a href="#">모바일 서비스</a></li>
+						<li><a href="#">FAQ</a></li>
+					</ul>
+					<ul class="s_4">
+						<li><a href="elibrary01.html">전자책</a></li>
+						<li><a href="elibrary01.html">오디오 북</a></li>
+						<li><a href="elibrary01.html">동영상 북</a></li>
+						<li><a href="elibrary01.html">E-러닝</a></li>
+						<li><a href="elibrary01.html">키즈북</a></li>
+					</ul>
+					<ul class="s_5">
+						<li><a href="#">공지사항</a></li>
+						<li><a href="#">공개 자료실</a></li>
+						<li><a href="news03.html">도서관 갤러리</a></li>
+					</ul>
+					<ul class="s_6">
+						<li><a href="#">연혁</a></li>
+						<li><a href="#">조직도</a></li>
+						<li><a href="#">현황 안내</a></li>
+						<li><a href="#">운영 규정</a></li>
+						<li><a href="produce05.html">오시는 길</a></li>
+					</ul>
+				</div>							
+			</div>
+		</header>
+
+		<div class="row nav_bar">
+			<a href="index.html"><img src="images/home.png" alt="홈 화면"></a><img src="images/nav_b.png" alt="구분선">
+			<a href="#">도서관 이용</a><img src="images/nav_b.png" alt="구분선">
+			<a href="guide01.html">이용 안내</a>			
+		</div>
+
+		<div class="row block guide">
+			<h2><a href="guide01.html">이용 안내</a></h2>
+			<ul id="tab">
+				<li>이용 시간</li>
+				<li>도서관 이용</li>
+				<li>대출회원 가입</li>
+				<li>도서 대출</li>
+				<li>편의 시설</li>
+			</ul>
+			<div class="tab_1">
+				<dl> <!--휴관일-->
+					<dt>휴관일</dt>
+					<dd>
+						<ul>
+							<li>정기 휴관일 : 첫째, 셋째 주 월요일, 일요일을 제외한 국가 지정 공휴일 (단, 일료일과 겹치면 휴관)</li>
+						</ul>						
+					</dd>
+				</dl>		
+				<dl> <!--종합자료실 디지털 코너-->
+					<dt>종합자료실 디지털 코너</dt>
+					<dd>
+						<ul>
+							<li>평일 : 09:00 ~ 22:00</li>
+							<li>토·일요일 : 09:00 ~ 17:00</li>
+						</ul>
+					</dd>
+				</dl>
+				<dl> <!--어린이 자료실-->
+					<dt>어린이 자료실</dt>
+					<dd>
+						<ul>
+							<li>평일 : 09:00 ~ 18:00</li>
+							<li>토·일요일 : 09:00 ~ 17:00</li>
+						</ul>
+					</dd>
+				</dl>
+				<dl> <!--일반 열람실-->
+					<dt>일반 열람실</dt>
+					<dd>
+						<ul>
+							<li>09:00 ~ 23:00</li>							
+						</ul>
+					</dd>
+				</dl>
+			</div>
+			<div class="tab_2">	
+				<dl>
+					<dt>열람실 이용</dt>
+					<dd>
+						<ul>
+							<li>열람실 이용 대상 : 경기도민뿐만 아니라 지역제한 없이 중학생 이상 이용가능</li>
+							<li>열람실 이용 절차 : 자율 좌석제로 운영</li>
+							<li>열람실 이용 시간 : 07:00 ~ 23:00</li>
+							<li>열람실 휴관 안내 : 정기휴관일(첫째, 셋째 월요일), 국가지정 공휴일, 1월1일, 설연휴, 추석연휴</li>
+						</ul>
+					</dd>
+				</dl>
+				<dl>
+					<dt>홈페이지 이용 안내</dt>
+					<dd>
+						<ul>
+							<li>수원시 도서관 홈페이지 정회원에게는 전자책 서비스, E-Learning서비스, 대출/반납 내역조회, 도서예약, 희망도서 신청 등 온라인 서비스를 제공하고 있습니다.</li>
+							<li>정회원 : (수원시 도서대출회원) : 홈페이지에서 제공하는 온라인 서비스 이용가능</li>
+							<li>준회원
+								<ol>
+									<li>게시판 글쓰기만 가능</li>
+									<li>열람실 이용 가능(서수원, 북수원, 광교홍재, 영통, 태장마루)</li>
+									<li class="button">홈페이지 가입 바로가기</li>
+								</ol>
+							<li>홈페이지 탈퇴</li>
+								<ol>
+									<li class="button" style="margin-left:20px">홈페이지 탈퇴 바로가기</li>
+								</ol>
+							</li>
+						</ul>
+					</dd>
+				</dl>
+				<dl>
+					<dt>전자도서관</dt>
+					<dd>
+						<ul>
+							<li>도서관에서 책을 대출, 반납하듯이 어디서나 인터넷에 접속하여 전자책(e-book)을 대출, 반납하고 대출예약, 연장까지 할 수 있는 On-line E-book 도서관 시스템</li>
+							<li>이용 대상 : 수원시도서관 도서대출회원으로 가입한 정회원</li>
+							<li>이용 신청
+								<ol>
+									<li>1. 수원시도서관 방문 대출회원증 발급</li>
+									<li>2. 도서관 홈페이지 회원 가입시 대출회원여부 확인</li>
+								</ol>
+							</li>
+							<li>이용 방법
+								<ol>
+									<li>1. 회원 로그인</li>
+									<li>2. 전자도서관 접속</li>
+								</ol>
+							</li>
+							<li>대출권수 및 기한 : 5권, 7일</li>
+							<li>반납
+								<ol>
+									<li>대출기한 경과시 자동 반납</li>
+									<li>대출기한 중 반납 가능(단, 대출 후 약 40분 후 반납가능)</li>
+								</ol>
+							</li>							
+							<li>문의처 : 중앙도서관 228-4787</li>
+						</ul>
+					</dd>
+				</dl>							
+			</div>
+			<div class="tab_3">
+				<dl> <!--대출회원 가입 대상-->
+					<dt>대출회원 가입 대상</dt>
+					<dd>
+						<ul>
+							<li>경기도민</li>
+							<li>경기도민은 아니지만 수원시 소재 학교에 재학중인 학생과 수원시 소재 직장에 재직중인 직장인</li>
+							<li>중학생 이상인 경우 본인이 직접 방문하여 회원 가입</li>
+						</ul>
+					</dd>
+				</dl>
+				<dl> <!--대출회원 가입 절차-->
+					<dt>대출회원 가입 절차</dt>
+					<dd>
+						<ul>
+							<li>본인명의 휴대폰이 없을 경우 아이핀 또는 마이핀을 발급하여 도서관에 방문해 주세요.</li>
+							<li>본인 인증 시 반드시 필요합니다.</li><br />
+							<li style="background-image:none;">							
+								<span><b>01</b><br />도서관 홈페이지에서 회원등록</span>
+								<img src="images/left_tri_red_b.png" alt="다음" style="margin-top:30px;">
+								<span><b>02</b><br />도서관에 방문하여 필요한 서류 제출</span>
+								<img src="images/left_tri_red_b.png" alt="다음" style="margin-top:30px;">
+								<span><b>03</b><br />직원 확인 후 대출회원 등록, 회원증 발급</span>
+							</li>
+						</ul>
+					</dd>
+				</dl>
+				<dl> <!--필요한 서류-->
+					<dt>필요한 서류</dt>
+					<dd>
+						<table>
+							<tr>
+								<th>회원 구분</th>
+								<th>자격 요건</th>
+								<th>필요한 서류 (택1)</th>
+							</tr>
+							<tr>
+								<th rowspan="3">경기도민</th>
+								<td>일반인</td>
+								<td>주민등록증</td>
+							</tr>
+							<tr>								
+								<td>청소년</td>
+								<td>주민등록증 / 학생증 / 주민등록등본</td>
+							</tr>
+							<tr>
+								<td>영아(0세)-초등학교 6학년</td>
+								<td>보호자신분증+주민등록등본 / 가족관계증명서 / 건강보험증</td>
+							</tr>
+							<tr>
+								<th rowspan="2">경기도민이 아닌 경우</th>
+								<td>수원시 소재 학교 재학생</td>
+								<td>주민등록증+학생증 / 주민등록증+재학증명서</td>
+							</tr>	
+							<tr>
+								<td>수원시 소재 직장 재직자</td>
+								<td>주민등록증+재직증명서</td>
+							</tr>	
+							<tr>
+								<th>비고</th>
+								<td colspan="2">학생증 제출 시 생년월일, 주소가 기재되어 있는 것만 유효함</td>
+							</tr>	
+						</table>
+					</dd>
+				</dl>
+				<dl> <!--대출회원증 종류-->
+					<dt>대출회원증 종류</dt>
+					<dd>
+						<ul>
+							<li>일반회원증 : 카드 형태 (바코드 회원증)</li>
+							<li>스마트앱 회원증 : 모바일 기기에서 '수원시 도서관' 앱 다운로드 후 사용</li>
+						</ul>
+					</dd>
+				</dl>
+				<dl> <!--회원증 신청 시간 및 접수 장소-->
+					<dt>회원증 신청 시간 및 접수 장소</dt>
+					<dd>
+						<table>
+							<tr>
+								<th>&nbsp;</th>
+								<th>신청 시간</th>
+								<th>접수 장소</th>
+								<th>비고</th>
+							</tr>
+							<tr>
+								<th>평일</th>
+								<td>09:00 ~ 22:00</td>
+								<td rowspan="2">중앙도서관 자료실</td>
+								<td rowspan="2">신규 : 당일 대출 가능<br />재발급 : 3일 후 대출 가능</td>
+							</tr>
+							<tr>
+								<th>토·일요일</th>
+								<td>09:00 ~ 17:00</td>								
+							</tr>
+						</table>
+					</dd>
+				</dl>				
+			</div>
+			<div class="tab_4">
+				<dl> <!--대출 기간 및 연장-->
+					<dt>대출 기간 및 연장</dt>
+					<dd>
+						<ul>
+							<li>대출 책수 및 기간 : 회원 <strong>1인당 7권</strong>이며, 대출 기간은 <strong>14일</strong>입니다.</li>
+							<li>도서 반납 연장 신청 기한 : 반납예정일 7일전부터</li>
+							<li>도서 반납 연장 신청 방법
+								<ol>
+									<li>- 도서관 자료실안내데스크 방문</li>
+									<li>- 도서관 홈페이지(로그인 &gt; 마이페이지 &gt; 대출내역조회 &gt; [반납연기] 클릭)</li>
+									<li>- 모바일 앱(로그인 &gt; 내서재 &gt; 대출현황 &gt; [반납연기] 클릭)</li>
+								</ol>								
+							</li>
+							<li>연장 불가 : 연체 중인 경우, 예약 자료인 경우</li>
+						</ul>
+					</dd>
+				</dl>
+				<dl> <!--도서 예약-->
+					<dt>도서 예약</dt>
+					<dd>
+						<ul>
+							<li>도서 일반 예약
+								<ul>
+									<li>: 원하는 도서가 대출중인 경우, 해당 도서 우선 예약</li>
+									<li>예약 방법
+										<ol>
+											<li>1. 도서관 홈페이지 자료 찾기 &gt; 원하는 도서명 검색 &gt; 소장정보에 예약 버튼 클릭</li>
+											<li>2.  문자메시지 발송 후, 예약 후 예약당일을 포함해 3일 이내 도서관 방문 및 수령 (3일 이내에 도서 미수령 하실 경우, 자동 취소)</li>
+											<li>※ 예약도서 상호대차 전환가능 : 문자수령 후 상호대차 전환하기 클릭</li>
+											<li>※ 예약 신청 후 미수령 하실 경우, 예약 서비스 이용 7일간 중지</li>
+											<li>※ 부득이하게 미수령하실 경우 사전 취소 부탁드립니다.</li>
+										</ol>
+									</li>
+								</ul>
+							</li>
+							<li>전화 예약 서비스
+								<ol>
+									<li>- 예약한 도서를 자료실 운영 시간 내 이용이 어려운 경우, 전화 예약으로 대출</li>
+									<li>- 신청 대상 도서 : 예약도서(상호대차 신청 도서, 일반 예약 도서)</li>
+									<li>- 신청 방법 : 도서관 자료실 운영 시간 내 자료실로 전화 예약</li>
+									<li>- 수령 방법 : 수령 예약한 일시에 안내데스크에서 수령 (각 도서관별로 상이 할 수 있으며, 전화 예약 시 확인)
+										<ol>
+											<li>※ 전화 예약 신청 자료는 예약하신 당일만 수령 가능 (미수령시 자동 취소)</li>
+											<li>※ 부득이하게 미수령 하실 경우 사전 취소 부탁드립니다.</li>
+										</ol>
+									</li>									
+								</ol>
+							</li>
+						</ul>
+					</dd>
+				</dl>
+				<dl> <!--도서 반납-->
+					<dt>도서 반납</dt>
+					<dd>
+						<ul>
+							<li>해당 도서관 반납 : 자료실 및 무인반납기에 반납</li>
+							<li>타 도서관 반납
+								<ol>
+									<li>- 타도서관 자료실 데스크에 반납가능(부록포함자료 제외)</li>
+									<li>- 타도서관 외부무인반납기에 반납가능(부록포함자료 제외)</li>
+									<li>- 수원역, 영통역, 수원시청역, 광교 중앙역, 망포역 내 무인반납기 반납</li>
+								</ol>
+							</li>
+						</ul>
+					</dd>
+				</dl>
+				<dl> <!--대출 정지·도서 변상-->
+					<dt>대출 정지·도서 변상</dt>
+					<dd>
+						<ul>
+							<li>대출정지 : 반납기일을 초과하여 반납하였을 경우 초과(연체)된 일수만큼 대출정지<br />
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(한 도서관에서 대출이 정지되면 수원시 모든 도서관에서 대출 정지됨)</li>
+							<li>도서변상 : 대출도서의 분실 또는 훼손시에는 동일도서로 변상</li>
+						</ul>
+					</dd>
+				</dl>
+				<dl> <!--회원 공유-->
+					<dt>회원 공유</dt>
+					<dd>
+						<ul>
+							<li>회원공유 : 수원시에서 운영하는 도서관은 하나의 회원증으로 타 도서관 이용가능</li>
+							<li>통합회원증 공유 도서관 
+								<ol>
+									<li>- 수원시립도서관 : 선경, 중앙, 창룡, 화서다산, 호매실, 서수원, 한림, 버드내, 북수원, 대추골, 일월, 광교홍재,<br />
+									&nbsp;&nbsp;&nbsp;영통, 태장마루, 광교푸른숲, 매여울, 망포글빛, 인도래</li>
+									<li>- 수원시 소재도서관 : 슬기샘, 지혜샘, 바른샘, 한아름, 반달어린이, 사랑샘, 희망샘, 화홍어린이</li>
+								</ol>
+							</li>
+						</ul>
+					</dd>
+				</dl>
+				<dl> <!--특별 회원-->
+					<dt>특별 회원</dt>
+					<dd>
+						<ul>
+							<li>장애인 회원제
+								<ol>
+									<li>- 회원 자격 : 수원시 관내 등록 장애니</li>
+									<li>- 혜택 : 
+										<ol>
+											<li>대출권수 확대 (7권 → 10권)</li>		
+											<li>대출기한 확대 (14일 → 28일)</li>									
+										</ol>
+									</li>
+									<li>- 가입 시 준비물 : 장애인 등록증</li>
+								</ol>
+							</li>
+							<li>다둥이 회원제
+								<ol>
+									<li>- 회원 자격 : 세자녀 이상의 가족 (부모와 자녀)</li>
+									<li>- 혜택 : 대출권수 확대 (7권 → 10권)</li>
+									<li>-가입 시 준비물 : 셋째이상 자녀임을 확인할 수 있는 서류 (등본 및 건강보험증 등)</li>
+								</ol>
+							</li>
+						</ul>
+					</dd>
+				</dl>
+			</div>			
+			<div class="tab_5">	
+				<dl>
+					<dt>복사</dt>
+					<dd>
+						<ul>
+							<li>위치 : 1층 복사코너</li>
+							<li>이용 시간 : 평일 09:00~22:00, 토·일요일 09:00~17:00</li>
+							<li>운영 방법
+								<ol>
+									<li>A4, B4 규격 복사 가능(40원)</li>
+									<li>카드 자율복사제로 운영</li>
+									<li>카드구입 : 1층 디지털코너 자동판매기 (3,000원권 판매)</li>
+								</ol>
+							</li>
+						</ul>
+					</dd>
+				</dl>
+				<dl>
+					<dt>프린트</dt>
+					<dd>
+						<ul>
+							<li>위치 : 1층 디지털코너</li>
+							<li>이용 시간 : 평일 09:00~22:00, 토·일요일 09:00~17:00</li>
+							<li>운영 방법
+								<ol>
+									<li>카드식 자율운영(A4 전용 프린터기 2대 설치, 흑백, 컬러 출력가능)</li>
+									<li>프린트금액 : A4 1매 50원(흑백), 300원(컬러)</li>
+									<li>카드구입 : 1층 디지털코너 자동판매기 (3,000원권 판매)<br />
+									5000원권 판매(1층 자료실 데스크에 문의 바람)</li>
+								</ol>
+							</li>
+						</ul>
+					</dd>
+				</dl>			
+			</div>		
+		</div>
+
+		<footer>
+			<div class="banner-group">
+				<span id="left-f">&lt;</span>
+				<div class="banner-in">
+					<ul id="banner-slide">
+						<li><a href="http://suwon.go.kr" target="_blank" title="휴먼시티 수원시"><img src="images/banner01.gif" alt="휴먼시티 수원시"></a></li>
+						<li><a href="http://news.suwon.go.kr/" target="_blank" title="수원시 인터넷 신문"><img src="images/banner02.gif" alt="수원시 인터넷 신문"></a></li>
+						<li><a href="http://tv.suwon.go.kr/" target="_blank" title="수원 인터넷 방송"><img src="images/banner03.gif" alt="수원 인터넷 방송"></a></li>
+						<li><a href="http://www.nl.go.kr/nl/" target="_blank" title="국립 중앙도서관"><img src="images/banner05.gif" alt="국립 중앙도서관"></a></li>
+						<li><a href="http://www.minwon.go.kr/" target="_blank" title="민원24"><img src="images/banner07.gif" alt="민원24"></a></li>
+						<li><a href="http://nlcollection.nl.go.kr/" target="_blank" title="국립 중앙도서관 디지털 컬렉션"><img src="images/banner08.gif" alt="국립 중앙도서관 디지털 컬렉션"></a></li>
+						<li><a href="http://www.ecomoney.co.kr/" target="_blank" title=""><img src="images/banner09.gif" alt=""></a></li>
+						<li><a href="https://www.nlcy.go.kr/index.do" target="_blank" title=""><img src="images/banner11.gif" alt=""></a></li>
+						<li><a href="http://www.suwon.go.kr/sw-www/www01/www01-05/www01-05-01.jsp" target="_blank" title=""><img src="images/banner12.gif" alt=""></a></li>
+						<li><a href="http://news.suwon.go.kr/ebook/home/index.php" target="_blank" title=""><img src="images/banner14.gif" alt=""></a></li>
+						<li><a href="http://storytelling.nlcy.go.kr/DmhMain/DmhMainRecommendList.do" target="_blank" title=""><img src="images/banner15.gif" alt=""></a></li>
+						<li><a href="https://www.data4library.kr/" target="_blank" title=""><img src="images/banner17.gif" alt=""></a></li>
+					</ul>
+					<ul id="control-f">
+						<li>&nbsp;</li>
+						<li>&nbsp;</li>
+						<li>&nbsp;</li>
+						<li>&nbsp;</li>
+						<li>&nbsp;</li>
+						<li>&nbsp;</li>
+						<li>&nbsp;</li>
+						<li>&nbsp;</li>
+						<li>&nbsp;</li>
+						<li>&nbsp;</li>
+						<li>&nbsp;</li>
+						<li>&nbsp;</li>
+					</ul>
+				</div>				
+				<span id="right-f">&gt;</span>				
+			</div>
+			<div class="row-0">
+				<div class="fnb row-5">
+					<ul>
+						<li><a href="#">도서관 연혁</a></li>
+						<li><a href="#">개인정보 처리방침</a></li>
+						<li><a href="#">홈페이지 이용약관</a></li>
+					</ul>
+				</div>
+				<div class="fav row-5">
+					<ul>
+						<li><a href="#">수원시 도서관 사업소<span class="icon-down-open-mini"></span></a></li>
+						<li><a href="#">도서관 바로 가기<span class="icon-down-open-mini"></span></a></li>
+					</ul>						
+				</div>
+				<div class="address row-5">
+					<h3><a href="index.html"><img src="images/f_logo.png" alt="로고"></a></h3>
+					<address>
+						[16462] 경기도수원시 팔달구 팔달산로 318 (교동) <br />
+						전화: 031-228-4788 / 1899-3300 팩스 : 031-228-3745 <br />
+						Copyright by 수원시 도서관사업소 All Right Reserved. 
+					</address>						
+				</div>
+				<div class="counter row-5">
+					<dl>
+						<dt>오늘</dt>
+						<dd>60</dd>
+					</dl>
+					<dl>
+						<dt>전체</dt>
+						<dd>1,215,424</dd>
+					</dl>
+				</div>	
+			</div>	
+		</footer>
+
+	</div>	
+</body>
+</html>
