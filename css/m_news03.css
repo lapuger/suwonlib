@@ -1,0 +1,548 @@
+@charset "UTF-8"
+
+#wrapper {
+	width:100%;
+	position:relative;
+}
+#m_bg {
+	width:100%;
+	height:100%;
+	background-color:rgba(0,0,0,0.7);
+	position:fixed;top:0; left:0; z-index:19;
+	display:none;
+}
+
+header {
+	position:fixed;	top:0;
+	z-index:10;
+	width:100%;
+	padding:2%;
+	background-color:#fff;
+	color:#222;
+	box-shadow:0 0 10px rgba(0,0,0,0.3);
+	overflow:hidden;
+	}
+
+#header {
+	width:95%;
+	margin:0 auto;
+	position:relative;
+	overflow:hidden;
+	}
+	header #header>* {
+		float:left;
+		text-align:center;
+	}	
+	#header h1 img,p img {
+		width:70%;
+	}
+	#header p,h1 {
+		width:10%;
+	}	
+	#header form {
+		width:56%;		
+		margin:0 2%;	
+		position:relative;
+	}
+	#header form input[type=text] {	
+		width:100%;
+		padding:2% 0;
+		border:1px solid #e0e0e0;
+		border-radius:1.25rem;
+		box-shadow:inset 2px 2px 3px rgba(0,0,0,0.2);
+	}
+	#header form button {	
+		border:none;	
+		background-color:transparent;
+		position:absolute;
+		right:5%; top:5%;
+		height:100%;
+	}
+	#header form button img {
+		height:60%;
+	}
+	#header ul {
+		overflow:hidden;
+		width:100%;
+		font:normal 0.8rem 'Yeon Sung';
+	}
+	#header ul>li {
+		padding:1% 0;
+		margin:2% 0 0 0;
+		float:left;
+		width:22%;
+		line-height:1.5;
+		margin-right:17%;
+		background-color:#fff;
+		border-radius:1rem;
+		text-align:center;
+		letter-spacing:-1;
+	}	
+	#header ul>li:last-child {
+		margin-right:0;
+	}
+	#header ul li a {
+		color:#222;
+	}
+	@media only screen and (min-width:768px) and (max-width:1023px) {
+		#header form input[type=text] {
+			padding:3% 0;
+			border-radius:2em;
+		}
+		#header ul {
+			font-size:1.5em;
+		}
+		#header ul>li {
+			padding:1.5% 0;
+			border-radius:2em;
+		}
+	}
+	@media only screen and (min-width:1024px) {
+		#header form input[type=text] {
+			padding:3% 0;
+			border-radius:2em;
+		}
+		#header ul {
+			font-size:2em;
+		}
+		#header ul>li {
+			padding:1.5% 0;
+			border-radius:2em;
+		}
+	}
+
+#menu {
+	width:70%;
+	height:100%;
+	background-color:#fff;
+	position:fixed; top:0; left:-70%;
+	display:none;
+	z-index:20;
+	box-shadow:0 0 10px rgba(0,0,0,0.3);	
+	}
+
+	#menu p:first-of-type {
+		position:absolute;
+		left:88%; top:1%;
+
+	}
+	#menu p:first-of-type img {
+		width:60%;
+	}
+
+	#menu #lnb {
+		overflow:hidden;
+		width:90%;
+		margin:0 auto;
+		margin-top:10%;
+	}
+	#menu #lnb li {
+		float:left;
+		background-color:#c78435;
+		text-align:center;
+		width:30%;
+		margin-right:5%;
+		padding:0.4% 0;
+		border-radius:20px;	
+	}
+	#menu #lnb a {
+		font-size:0.9rem;
+		font-family:'Yeon Sung',cursive;
+		color:#fff;
+	}
+	#menu p:nth-of-type(2) {
+		width:90%;	
+		margin:5% auto;
+		border-bottom:0.1rem solid #e84d3b;
+	}
+	#menu p:nth-of-type(2) a {
+		font-size:0.6rem;
+		color:#555;
+	}
+	#menu #sns {
+		overflow:hidden;
+		width:80%;
+		margin:6% auto;
+	}
+	#menu #sns li {
+		float:left;
+		width:22%;
+		margin:0 2%;
+		}
+	#menu #sns li:first-child {
+		margin-left:0;
+	}
+	#menu #sns li:last-child {
+		margin-right:0;
+	}
+	#menu #sns li img {
+		width:100%;
+	}
+	#menu #sns dl {
+		text-align:center;
+			color:#777;	
+	}
+	#menu #sns dd {
+		padding-top:2%;
+		font-size:0.6rem;
+	}
+
+	#menu #snb {
+		position:absolute; bottom:0; left:0;
+		width:100%;
+		height:75%;
+		overflow:hidden;
+	}
+	#menu #snb>* {
+		float:left;
+	}
+	#menu #snb>ul {
+		width:24%;
+		height:100%;	
+		text-align:center;
+	}
+	#menu #snb>ul li {
+		width:100%;
+		height:16.666667%;
+		box-shadow:0 10px 6px -10px rgba(0,0,0,0.3);
+		padding:40% 0;
+		cursor:pointer;
+		border-bottom:0.3rem solid transparent;
+		overflow:hidden;
+	}
+	#menu #snb ul img {
+		width:50%;
+	}
+
+	#menu #snb dd {
+		padding-top:5%;
+		font-family:'Yeon Sung',cursive;
+		font-size:0.8rem;	
+	}
+	#menu #snb div {
+		width:76%;
+		height:100%;		
+		position:absolute;
+		bottom:0; right:0;
+		font-size:0.7rem;
+		line-height:2.5;
+		box-shadow:-6px 0px 10px -5px rgba(0,0,0,0.2);
+	}
+	#menu #snb div u {
+		text-decoration:none;
+		float:right;
+	}
+	#menu #snb div a{
+		color:#222;
+	}
+	#menu #snb div>ul>li {
+		width:100%;
+		position:relative;
+		border-bottom:1px solid #e0e0e0;
+		padding:0 4%;
+		cursor:pointer;
+	}
+	#menu #snb div .ss_snb {
+		position:absolute;
+		left:150%; top:0;
+		width:100%;
+	}
+	#menu #snb div .ss_snb li {
+		border-bottom:1px solid #e0e0e0;
+	}
+
+	@media only screen and (min-width:768px) and (max-width:1023px) {
+		#menu #lnb a {
+			font-size:1.5em;
+		}
+		#menu p:nth-of-type(2) a {
+			font-size:1.2em;
+		}
+		#menu p:nth-of-type(2) {		
+			border-bottom:0.2em solid #e84d3b;
+		}
+		#menu #snb {
+			height:70%
+		}
+		#menu #sns dd {
+			font-size:1em;
+		}
+		#menu #snb dd {
+			font-size:1.5em;	
+		}
+		#menu #snb>ul li {
+			padding:17% 0;
+			border-bottom:0.4em solid transparent;
+		}
+		#menu #snb ul img {
+			width:35%;
+		}
+		#menu #snb div {	
+			font-size:1.3em;
+		}
+	}
+
+	@media only screen and (min-width:1024px) {
+		#menu #lnb a {
+			font-size:2em;
+		}
+		#menu p:nth-of-type(2) a {
+			font-size:1.5em;
+		}
+		#menu p:nth-of-type(2) {		
+			border-bottom:0.3em solid #e84d3b;
+		}
+		#menu #snb {
+			height:70%
+		}		
+		#menu #sns dd {
+			font-size:1.3em;
+		}
+		#menu #snb dd {
+			font-size:2em;	
+		}
+		#menu #snb>ul li {
+			padding:17% 0;
+			border-bottom:0.5em solid transparent;
+		}
+		#menu #snb ul img {
+			width:40%;
+		}
+		#menu #snb div {	
+			font-size:1.8em;
+		}
+	}
+	@media only screen and (min-aspect-ratio:9/16) {
+		#menu #snb>ul li {
+			padding:25% 0;
+		}
+	}
+	@media only screen and (min-aspect-ratio:3/5) {		
+		#menu #snb>ul li {
+			padding:13% 0;
+		}
+	}
+	@media only screen and (min-aspect-ratio:1/1) {
+		#menu {
+			width:40%;
+			font-size:0.6em;
+		}
+	}
+
+#tab {
+	width:90%;	
+	margin:0 auto;
+	margin-top:23%;	
+	}
+	#tab ul {
+		overflow:hidden;
+		padding:3%;
+	}
+	#tab li {
+		float:left;
+		text-align:center;
+		padding:2%;
+		width:25%;
+		height:3em;
+		border-radius:2em;
+		background-color:#fff;
+		font:normal 0.8em 'Yeon Sung';
+		box-shadow:0 0 10px rgba(0,0,0,0.3);
+	}
+	#tab li:first-child {
+		padding:2.5%;
+		margin-right:5%;
+	}
+
+	@media only screen and (min-width:768px) and (max-width:1023px) {
+		#tab li {
+			font-size:1.5em;
+			height:2.5em;
+			width:20%;
+		}
+	}
+	@media only screen and (min-width:1024px) {
+		#tab li {
+			font-size:2em;
+			height:2.5em;
+			width:20%;
+		}
+	}	
+
+#main {
+	width:90%;
+	margin:0 auto;
+	position:relative;
+	margin-top:8%;
+	margin-bottom:5%;
+	}
+	#main #banner {
+		position:relative;
+		top:20%;
+		padding-bottom:56%;
+		width:100%;	
+		margin-top:18%;
+		overflow:hidden;
+		box-shadow:0 0 10px rgba(0,0,0,0.3);
+	}
+	#banner li {
+		position:absolute;
+		width:100%;		
+	}
+	#banner li:nth-child(1) {
+		left:0;
+	}
+	#banner li:nth-child(2) {
+		left:100%;
+	}
+	#banner li:nth-child(3) {
+		left:200%;
+	}
+	#banner li:nth-child(4) {
+		left:300%;
+	}
+	#banner li:nth-child(5) {
+		left:400%;
+	}
+	#banner li:nth-child(6) {
+		left:500%;
+	}
+	#banner li img {
+		width:100%;
+	}
+	#main #control {
+		position:absolute;
+		width:100%;
+		left:50%; top:-24%;
+		margin-left:-3.8em;
+		overflow:hidden;
+	}
+	#main #control li {
+		width:0.8rem;
+		height:0.8rem;
+		border-radius:100%;
+		float:left;
+		margin:2% 2%;
+		background-color:#fff;
+		box-shadow:0 0 10px rgba(0,0,0,0.3);
+	}
+
+	@media only screen and (min-width:768px) and (max-width:1023px) {
+		#main #control {
+			margin-left:-7.5em;
+		}
+		#main #control li {
+			width:1.2em;
+			height:1.2em;
+			box-shadow:0 0 15px rgba(0,0,0,0.3);			
+		}
+		#main #banner {
+			box-shadow:0 0 15px rgba(0,0,0,0.3);	
+		}
+	}
+	@media only screen and (min-width:1024px) {
+		#main #control {
+			margin-left:-11em;
+		}
+		#main #control li {
+			width:1.8em;
+			height:1.8em;		
+			box-shadow:0 0 20px rgba(0,0,0,0.3);	
+		}
+		#main #banner {
+			box-shadow:0 0 20px rgba(0,0,0,0.3);	
+		}
+	}
+
+footer {
+	width:100%;
+	padding:2% 0;	
+	background-color:#222;
+	color:#e0e0e0;
+	overflow:hidden;
+	font-size:0.6em;
+	}
+	footer a {
+		color:#e0e0e0;		
+	}	
+	footer .row-0 {
+		width:90%;		
+		margin:0 auto;
+	}
+	footer .row-5 {
+		overflow:hidden;
+	}
+	footer .fnb li {
+		float:left;
+		width:30%;
+		text-align:center;
+		line-height:3;
+		margin:3% 1.5%;
+		background-color:#404040;	
+	}
+	footer .fav ul {
+		overflow:hidden;
+		margin:3% 0;
+	}
+	footer .fav li {
+		float:left;
+		width:40%;
+		border:1px solid #e0e0e0;
+		text-align:center;
+		line-height:2;
+		margin:0 5%;
+	}
+	footer .address>* {
+		float:left;		
+	}
+	footer .address h3 {
+		display:inline-block;	
+		width:40%;
+	}
+	footer .address h3 img {
+		width:100%;
+	}
+	footer .address address {
+		width:55%;
+		margin-left:5%;
+		font-style: normal;
+		line-height:1.8;
+	}	
+	@media only screen and (min-width:768px) and (max-width:1023px) {
+		footer {			
+			font-size:1em;			
+		}
+	}
+	@media only screen and (min-width:1024px) {
+		footer {
+			font-size:1.4em;
+		}
+	}
+	@media only screen and (max-aspect-ratio:2/3) {
+		footer {
+			position:absolute;
+			bottom:0;
+		}
+	}
+
+.bottom-fixed {
+	width:100%;	
+}
+.bottom-fixed #undo {
+	position:fixed;
+	z-index:9;
+	left:5%; bottom:0;
+}
+.bottom-fixed #top {
+	position:fixed;
+	z-index:9;
+	right:5%; bottom:0;
+}
+.bottom-fixed img {
+	width:15%;
+}
+@media only screen and (min-width:768px) {
+	.bottom-fixed img {
+		width:10%;
+	}
+}
