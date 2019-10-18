@@ -1,0 +1,392 @@
+<script type="text/javascript"> //모바일 접속
+	
+	var mobileKeyWords = new Array('iPhone', 'iPod', 'BlackBerry', 'Android', 'Windows CE', 'LG', 'MOT', 'SAMSUNG', 'SonyEricsson');
+	for (var word in mobileKeyWords){
+	    if (navigator.userAgent.match(mobileKeyWords[word]) != null){
+	        location.href = "http://lapuger.dothome.co.kr/suwonlib/m.news03.html";
+	        break;
+	    }
+	}
+	
+</script>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<!--------------------------meta-------------------------->
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<meta name="keword" content="검색어">
+		<meta name="description" content="사이트소개">
+
+	<!--------------------------script-------------------------->
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+		<script type="text/javascript">/**********주 메뉴 gnb 슬라이드 다운**********/
+			$(function(){
+				$('.sub_gnb').hide();
+				$('.sub_gnb ul').eq($(this).index()).css({'background-color':'#fff'});
+				$('.sub_gnb ul').mouseenter(function(){
+					$(this).css({'background-color':'#f8f8f8'});
+					$('.gnb li').eq($(this).index()).css({'border-bottom':'5px solid #c68335'});
+				}).mouseleave(function(){
+					$(this).css({'background-color':'#fff'});
+					$('.gnb li').eq($(this).index()).css({'border-bottom':'5px solid transparent'});
+					$('.gnb .select').css({'border-bottom':'5px solid #c68335'});
+				});
+				$('.gnb li').mouseenter(function(){
+					$(this).css({'border-bottom':'5px solid #c68335'});
+					$('.sub_gnb').stop().slideDown();
+					$('.sub_gnb ul').eq($(this).index()).css({'background-color':'#f8f8f8'});					
+				}).mouseleave(function(){
+					$(this).css({'border-bottom':'5px solid transparent'});
+					$('.sub_gnb').stop().slideUp();
+					$('.sub_gnb ul').eq($(this).index()).css({'background-color':'#fff'});
+					$('.gnb .select').css({'border-bottom':'5px solid #c68335'});
+				});	
+				$('.sub_gnb').mouseenter(function(){	
+					$('.sub_gnb').stop().slideDown();
+					}).mouseleave(function(){	
+					$('.sub_gnb').stop().slideUp();	
+				});			
+			});
+		</script>
+
+		<script type="text/javascript">/**********작은 메뉴 snb 드롭 다운**********/
+			$(function(){				
+				$('.dropdown ul').hide();
+				$('.dropdown').mouseenter(function(){					
+					$(this).find('ul').stop().slideDown().css({
+						'border':'1px solid #777','border-radius':'6px'
+					})
+				}).mouseleave(function(){
+					$(this).css({'border':'1px solid transparent'});
+					$(this).find('ul').stop().slideUp();
+				});
+			});			
+		</script>	
+
+		<script type="text/javascript">/**********tab div 넘기기**********/
+			$(function(){
+				$('.block div').hide();
+				$('.block div').first().show();
+				$('#tab li:first-child').addClass('on');			
+				$('#tab li').click(function(){
+					$('.block div').hide();
+					$('#tab li').removeClass('on');
+					$(this).addClass('on');
+					$('.block div').eq($(this).index()).show();				
+				});
+			});
+		</script>
+
+		<script type="text/javascript">/**********추천도서 페이지 넘기기**********/
+			$(function(){
+				$('section').hide();
+				$('section').first().show();
+				$('#control li:first-child').addClass('select');
+				$('#control li').click(function(){
+					$(window).scrollTop(0,0);
+					$('section').hide();
+					$('#control li').removeClass('select');
+					$(this).addClass('select');
+					$('section').eq($(this).index()).show();				
+				});
+			});
+		</script>
+
+		<script type="text/javascript"> /**********footer banner 넘기기**********/
+   $(document).ready(function(){ 
+        var list = $("#banner-slide");
+        var showNum = 12;
+        var num = 0;
+        var total = $(">li", list).length;
+        var liWidth = $("li:first", list).width();
+        var copyObj = $(">li:lt("+showNum+")", list).clone();
+        list.append(copyObj);
+        $("#right-f").on("click", function(){
+            if(num == total){ 
+                num = 0; 
+                list.css("margin-left",num); 
+            }
+            num++; 
+            list.stop().animate({marginLeft:-liWidth*num+"px"},500);
+            return false;
+        });
+        
+        
+        $("#left-f").on("click", function(){
+          if(num == 0){    
+              num = total; 
+              list.css("margin-left", -num*liWidth+"px");
+          }
+          num--;
+          list.stop().animate({marginLeft:-liWidth*num+"px"},500);
+          return false;
+        });
+    });  
+	</script>
+
+	<!--------------------------link-------------------------->
+		<link rel="icon" type="image/x-icon" href="images/www.png"><!--인터넷창에 표시되는 로고 이미지-->
+		<link rel="stylesheet" type="text/css" href="css/news03.css">
+		<link rel="stylesheet" type="text/css" href="fontello/css/fontello.css">
+
+	<!--------------------------style-------------------------->
+		<style type="text/css">
+			* {margin:0; padding:0; box-sizing:border-box;}
+			body {font:normal 16px '나눔바른고딕'; color:#222; line-height:1.8;}
+			/*body::-webkit-scrollbar {display: none;}*/
+			img {vertical-align:top;}
+			a{text-decoration:none;}
+			li{list-style:none;}						
+			.gnb li.select{border-bottom:5px solid #c68335;}
+
+			#tab li.on{background-color:#c78435;}
+			#control li.select{background-color:#222; color:#fff;}
+		</style>
+
+	<!--------------------------font-------------------------->
+		<style>
+			@font-face {
+			  font-family: KPBatang;
+			  src: url(font/KoPubWorldBatangMedium.woff);
+			  src: url(font/KOPUBWORLD BATANG MEDIUM.TTF.eot);
+			}
+			@font-face {
+			  font-family: KPDotum;
+			  src: url(font/KoPubWorldDotumMedium.woff);
+			  src: url(font/KOPUBWORLD DOTUM MEDIUM.TTF.eot);
+			}
+		</style>
+
+	<title>중앙도서관</title>
+</head>
+
+<body>
+	<div id="wrapper">
+		<header>
+			<div class="hnb">
+				<ul >
+					<li><a href="#">책나루(무인) 도서관</a></li>
+					<li><a href="#">희망도서 서비스</a></li>
+					<li><a href="#">자원봉사 신청</a></li>
+					<li><a href="#">디지털코너 예약</a></li>
+					<li><a href="#">도서관 체험교실</a></li>
+					<li><a href="#">사이트 맵</a></li>
+				</ul>
+			</div>
+			<div class="snb">
+				<h1><a href="index.html"><img src="images/logo_jlib.gif" alt="홈" title="홈"></a></h1>
+				<form>
+					<input type="text">
+					<button class="icon-search"></button>
+				</form>
+				<ul class="lnb">
+					<li><a href="#">로그인</a></li>
+					<li><a href="#">회원가입</a></li>					
+					<li class="dropdown"><a href="#">
+						SNS<span class="icon-down-open-mini">&nbsp;</span>
+						<ul>
+						  <li><a href="#">페이스북</a></li>
+						  <li><a href="#">트위터</a></li>
+						  <li><a href="#">인스타그램</a></li>
+					 </ul>
+					</a></li>
+					<li class="dropdown"><a href="#">
+					Language<span class="icon-down-open-mini">&nbsp;</span>
+					<ul>
+						 <li><a href="#">한국어</a></li>
+						 <li><a href="#">영어</a></li>
+					</ul>
+					</a></li>												
+				</ul>								
+			</div>
+			<div>
+				<ol class="gnb">
+					<li><a href="#">자료 검색</a></li>
+					<li><a href="#">소통·참여</a></li>
+					<li><a href="#">도서관 이용</a></li>
+					<li><a href="elibrary01.html">전자도서관</a></li>
+					<li class="select"><a href="#">도서관 소식</a></li>
+					<li><a href="#">도서관 소개</a></li>
+				</ol>
+				<div class="sub_gnb">
+					<ul class="s_1">
+						<li><a href="#">시립도서관 검색</a></li>
+						<li><a href="#">지역도서관 검색</a></li>
+						<li><a href="#">WEB-DB</a></li>
+						<li><a href="search04.html">책! 책! 책!</a></li>
+					</ul>
+					<ul class="s_2">
+						<li><a href="comu01.html">독서문화활동</a></li>
+						<li><a href="#">자주하는 질문</a></li>
+						<li><a href="#">커뮤니티</a></li>
+						<li><a href="#">납본·기증</a></li>
+						<li><a href="#">신청</a></li>
+						<li><a href="#">설문조사</a></li>
+					</ul>
+					<ul class="s_3">
+						<li><a href="guide01.html">이용 안내</a></li>
+						<li><a href="#">자료실 이용</a></li>
+						<li><a href="#">도서관 서비스</a></li>
+						<li><a href="#">모바일 서비스</a></li>
+						<li><a href="#">FAQ</a></li>
+					</ul>
+					<ul class="s_4">
+						<li><a href="elibrary01.html">전자책</a></li>
+						<li><a href="elibrary01.html">오디오 북</a></li>
+						<li><a href="elibrary01.html">동영상 북</a></li>
+						<li><a href="elibrary01.html">E-러닝</a></li>
+						<li><a href="elibrary01.html">키즈북</a></li>
+					</ul>
+					<ul class="s_5">
+						<li><a href="#">공지사항</a></li>
+						<li><a href="#">공개 자료실</a></li>
+						<li><a href="news03.html">도서관 갤러리</a></li>
+					</ul>
+					<ul class="s_6">
+						<li><a href="#">연혁</a></li>
+						<li><a href="#">조직도</a></li>
+						<li><a href="#">현황 안내</a></li>
+						<li><a href="#">운영 규정</a></li>
+						<li><a href="produce05.html">오시는 길</a></li>
+					</ul>
+				</div>							
+			</div>
+		</header>
+
+		<div class="row nav_bar">
+			<a href="index.html"><img src="images/home.png" alt="홈 화면"></a><img src="images/nav_b.png" alt="구분선">
+			<a href="#">도서관 소식</a><img src="images/nav_b.png" alt="구분선">
+			<a href="news03.html">도서관 갤러리</a>			
+		</div>
+
+		<div class="row block news">
+			<h2><a href="news03.html">도서관 갤러리</a></h2>
+			<ul id="tab">
+				<li>2019</li>
+				<li>지난 갤러리</li>				
+			</ul>
+			<div class="tab_1">
+				<section>
+					<dl> 
+						<dt><a href="#"><img src="images/2019_photo01.jpg" alt="도서관"></a></dt>
+						<dd><a href="#">사서들의 사연을 직접 듣는 워크숍 개최</a></dd>
+						<dd>중앙도서관은 사서한마당(사서들간 소통 도모 및 업무 능력 향상을 위해 시작된 감성 교육 프로그램)을 통해 전국의 사서들이 도서관에서 잊지 못할 이야기나 보람 있었던 경험을 15분간 이야기하는 시간을 마련했다.</dd>
+						<dd>2019-09-25</dd>
+					</dl>
+					<dl> 
+						<dt><a href="#"><img src="images/2019_photo02.jpg" alt="도서관"></a></dt>
+						<dd><a href="#">여름독서교실 개강</a></dd>
+						<dd>&lt;지구를 지키는 환경동화 읽기!&gt;를 주제로 4일 동안 진행되는 여름독서교실 모습.<br /> 오늘은 &lt;북극곰에게 냉장고를 보내야겠어&gt;라는 도서를 읽고 냉장고 편지지를 만들었다.</dd>
+						<dd>2019-09-19</dd>
+					</dl>	
+					<dl> 
+						<dt><a href="#"><img src="images/2019_photo03.jpg" alt="도서관"></a></dt>
+						<dd><a href="#">중앙도서관 일반 열람실, 의자 교체 작업 완료</a></dd>
+						<dd>중앙도서관은 전 열람실의 노후된 의자 교체 작업을 08.22~09.07 기간동안 진행하였다.<br />앞서 교체된 데스크에 적합한 의자에서 집중하고있는 시민들의 모습.</dd>
+						<dd>2019-09-10</dd>
+					</dl>
+					<dl> 
+						<dt><a href="#"><img src="images/2019_photo04.jpg" alt="도서관"></a></dt>
+						<dd><a href="#">시민회관에서 본 중앙도서관</a></dd>
+						<dd>수원 시민을 위한 문화 예술 공간인 시민회관은 중앙도서관 바로 옆에 위치해 있다.</dd>
+						<dd>2019-09-07</dd>
+					</dl>
+					<dl> 
+						<dt><a href="#"><img src="images/2019_photo05.jpg" alt="도서관"></a></dt>
+						<dd><a href="#">중앙도서관 앞 7층 석탑</a></dd>
+						<dd>중앙도서관으로 향하는 팔달산 자락 아래엔 수원 시민 헌장이 담긴 7층 석탑이 자리하고 있다. 꾸준한 관리로 변함없는 모습으로 매일 도서관을 찾는 시민을 맞이하고 있다.</dd>
+						<dd>2019-08-12</dd>
+					</dl>
+				</section>
+				<section>section-2</section>
+				<section>section-3</section>
+				<section>section-4</section>
+				<section>section-5</section>
+				<ul id="control">
+					<li>1</li>
+					<li>2</li>
+					<li>3</li>
+					<li>4</li>
+					<li>5</li>
+				</ul>	
+			</div>
+			<div class="tab_2">	
+				tab-지난 갤러리			
+			</div>					
+		</div>
+
+		<footer>
+			<div class="banner-group">
+				<span id="left-f">&lt;</span>
+				<div class="banner-in">
+					<ul id="banner-slide">
+						<li><a href="http://suwon.go.kr" target="_blank" title="휴먼시티 수원시"><img src="images/banner01.gif" alt="휴먼시티 수원시"></a></li>
+						<li><a href="http://news.suwon.go.kr/" target="_blank" title="수원시 인터넷 신문"><img src="images/banner02.gif" alt="수원시 인터넷 신문"></a></li>
+						<li><a href="http://tv.suwon.go.kr/" target="_blank" title="수원 인터넷 방송"><img src="images/banner03.gif" alt="수원 인터넷 방송"></a></li>
+						<li><a href="http://www.nl.go.kr/nl/" target="_blank" title="국립 중앙도서관"><img src="images/banner05.gif" alt="국립 중앙도서관"></a></li>
+						<li><a href="http://www.minwon.go.kr/" target="_blank" title="민원24"><img src="images/banner07.gif" alt="민원24"></a></li>
+						<li><a href="http://nlcollection.nl.go.kr/" target="_blank" title="국립 중앙도서관 디지털 컬렉션"><img src="images/banner08.gif" alt="국립 중앙도서관 디지털 컬렉션"></a></li>
+						<li><a href="http://www.ecomoney.co.kr/" target="_blank" title=""><img src="images/banner09.gif" alt=""></a></li>
+						<li><a href="https://www.nlcy.go.kr/index.do" target="_blank" title=""><img src="images/banner11.gif" alt=""></a></li>
+						<li><a href="http://www.suwon.go.kr/sw-www/www01/www01-05/www01-05-01.jsp" target="_blank" title=""><img src="images/banner12.gif" alt=""></a></li>
+						<li><a href="http://news.suwon.go.kr/ebook/home/index.php" target="_blank" title=""><img src="images/banner14.gif" alt=""></a></li>
+						<li><a href="http://storytelling.nlcy.go.kr/DmhMain/DmhMainRecommendList.do" target="_blank" title=""><img src="images/banner15.gif" alt=""></a></li>
+						<li><a href="https://www.data4library.kr/" target="_blank" title=""><img src="images/banner17.gif" alt=""></a></li>
+					</ul>
+					<ul id="control-f">
+						<li>&nbsp;</li>
+						<li>&nbsp;</li>
+						<li>&nbsp;</li>
+						<li>&nbsp;</li>
+						<li>&nbsp;</li>
+						<li>&nbsp;</li>
+						<li>&nbsp;</li>
+						<li>&nbsp;</li>
+						<li>&nbsp;</li>
+						<li>&nbsp;</li>
+						<li>&nbsp;</li>
+						<li>&nbsp;</li>
+					</ul>
+				</div>				
+				<span id="right-f">&gt;</span>				
+			</div>
+			<div class="row-0">
+				<div class="fnb row-5">
+					<ul>
+						<li><a href="#">도서관 연혁</a></li>
+						<li><a href="#">개인정보 처리방침</a></li>
+						<li><a href="#">홈페이지 이용약관</a></li>
+					</ul>
+				</div>
+				<div class="fav row-5">
+					<ul>
+						<li><a href="#">수원시 도서관 사업소<span class="icon-down-open-mini"></span></a></li>
+						<li><a href="#">도서관 바로 가기<span class="icon-down-open-mini"></span></a></li>
+					</ul>						
+				</div>
+				<div class="address row-5">
+					<h3><a href="index.html"><img src="images/f_logo.png" alt="로고"></a></h3>
+					<address>
+						[16462] 경기도수원시 팔달구 팔달산로 318 (교동) <br />
+						전화: 031-228-4788 / 1899-3300 팩스 : 031-228-3745 <br />
+						Copyright by 수원시 도서관사업소 All Right Reserved. 
+					</address>						
+				</div>
+				<div class="counter row-5">
+					<dl>
+						<dt>오늘</dt>
+						<dd>60</dd>
+					</dl>
+					<dl>
+						<dt>전체</dt>
+						<dd>1,215,424</dd>
+					</dl>
+				</div>	
+			</div>	
+		</footer>
+
+	</div>	
+</body>
+</html>

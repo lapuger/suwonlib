@@ -1,0 +1,580 @@
+<script type="text/javascript"> //모바일 접속
+/*
+	var mobileKeyWords = new Array('iPhone', 'iPod', 'BlackBerry', 'Android', 'Windows CE', 'LG', 'MOT', 'SAMSUNG', 'SonyEricsson');
+	for (var word in mobileKeyWords){
+	    if (navigator.userAgent.match(mobileKeyWords[word]) != null){
+	        location.href = "보내고 싶은 모바일 경로";
+	        break;
+	    }
+	}
+*/
+</script>
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<!--------------------------meta-------------------------->
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<meta name="keword" content="검색어">
+		<meta name="description" content="사이트소개">
+
+	<!--------------------------script-------------------------->
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+		<script type="text/javascript">//하단고정 버튼 누르면 이전페이지-페이지맨위로
+			$(function(){
+				$('#top').click(function(){
+					$('html,body').animate({scrollTop:0},'fast');
+				});
+				$('#undo').click(function(event){
+					event.preventDefault();
+					history.back(1);
+				});
+			});
+		</script>
+
+		<script type="text/javascript">//메뉴가 보여지게
+			$(document).ready(function(){
+				$('#header p:first-of-type').click(function(){
+					$('#menu').show().animate({left: '0'},'slow');
+					$('#m_bg').fadeIn();
+				});
+				$('#menu p:first-of-type,#m_bg').click(function(){
+					$('#menu').animate({left: '-70%'},function(){$(this).hide();});
+					$('#m_bg').fadeOut();
+				});				
+			});
+		</script>
+
+		<script type="text/javascript">//메뉴 탭 클릭하면 서브 메뉴 보여지게
+			$(function(){
+				$('#snb').find('div').hide();
+				$('#snb').find('div').first().show();	
+				$('#snb>ul li').first().addClass('select');
+				$('#snb>ul li').click(function(){
+					$('#snb div>ul>li').css({'width':'100%'});
+					$('#snb>ul li').removeClass('select');
+					$(this).addClass('select');
+					$('#snb').find('div').hide();
+					$('#snb').find('div').eq($(this).index()).show();
+				});		
+			});
+		</script>		
+
+		<script type="text/javascript">//서브메뉴의 서브메뉴가 보이도록 div width 재정렬
+			$(function(){					
+				$('.s_snb').click(function(){
+					$('.ss_snb').hide();
+					if($(this).find('.ss_snb').length){
+						$(this).find('.ss_snb').show().css({'left':'200%'}).animate({'left':'100%'},400);
+						$('#snb div>ul>li').animate({'width':'50%'},200);	
+						$('.ss_snb').click(function(){
+							preventDefault();	
+						});						
+					}else{
+						$('#snb div>ul>li').animate({'width':'100%'},400);				
+					}					
+				});
+			});
+		</script>	
+
+		<script type="text/javascript">// .plate tab1 메뉴 넘기기
+			$(function(){				
+				$('.plate section').hide();
+				$('.plate section').first().show();
+				$('#tab li:first-child').addClass('on');			
+				$('#tab li').click(function(){
+					$('.plate').css({'padding-bottom':'250%'});
+					$('.plate section .row').hide();
+					$('.plate section .row').first().show();
+					$('.plate section').hide();
+					$('#tab li').removeClass('on');
+					$(this).addClass('on');
+					$('.plate section').eq($(this).index()).show();	
+					$('.plate section').eq($(this).index()).find('.row').first().show();
+				});
+			});
+		</script>
+
+		<script type="text/javascript">// 일반 도서 .row 쭉쭉 추가하기
+			$(function(){				
+				$('.row').hide();
+				$('.row').first().show();
+
+				var i = 0;	
+				$('section #more1').click(function(){
+					i = i+1;
+					var row1 = $('section').eq(0).find('.row');
+					if(i<row1.length-1){
+					row1.eq(i).slideDown();
+					$('.plate').css({'padding-bottom':'+='+'220%'});
+					}else{
+						row1.eq(i).slideDown();
+						$(this).slideUp();
+					}				
+				});
+			});
+		</script>
+		<script type="text/javascript">// 어린이 도서 .row 쭉쭉 추가하기
+			$(function(){
+				$('.row').hide();
+				$('.row').first().show();
+
+				var i = 0;				
+				$('section #more2').click(function(){
+					i = i+1;
+					var row2 = $('section').eq(1).find('.row');
+					if(i<row2.length-1){
+					row2.eq(i).slideDown();
+					$('.plate').css({'padding-bottom':'+='+'220%'});
+					}else{
+						row2.eq(i).slideDown();
+						$(this).slideUp();
+					}				
+				});
+			});
+		</script>
+
+	<!--------------------------link-------------------------->
+		<link rel="icon" type="image/x-icon" href="images/www.png">
+		<link rel="stylesheet" type="text/css" href="css/m_search04.css">
+		<link rel="stylesheet" type="text/css" href="fontello/css/fontello.css">
+		<link href="https://fonts.googleapis.com/css?family=Yeon+Sung&display=swap" rel="stylesheet">
+
+	<!--------------------------style-------------------------->
+		<style type="text/css">
+			* {margin:0; padding:0; box-sizing:border-box;}
+			body {font:normal 16px 나눔바른고딕; color:#222; background-color:#e0e0e0;}
+			img {vertical-align:top;}
+			a {text-decoration:none;}
+			li {list-style:none;}
+			#menu #snb>ul li.select {border-bottom:0.3rem solid #c78435;}
+				@media only screen and (min-width:768px) and (max-width:1023px) {
+						#menu #snb>ul li.select {border-bottom:0.4em solid #c78435;}
+				}
+				@media only screen and (min-width:1024px) {
+					#menu #snb>ul li.select {border-bottom:0.5em solid #c78435;}
+				}
+			#header .this {background-color:#c78435;}
+			#header .this a {color:#fff;}
+			#control li.on {background-color:#333;}
+			.plate #tab li.on {background-color:#c78435; color:#fff;}
+		</style>
+
+	<!--------------------------font-------------------------->
+		<style>
+			@font-face {
+			  font-family: KPBatang;
+			  src: url(font/KoPubWorldBatangMedium.woff);
+			  src: url(font/KOPUBWORLD BATANG MEDIUM.TTF.eot);
+			}
+			@font-face {
+			  font-family: KPDotum;
+			  src: url(font/KoPubWorldDotumMedium.woff);
+			  src: url(font/KOPUBWORLD DOTUM MEDIUM.TTF.eot);
+			}
+		</style>
+
+
+
+	<title>중앙도서관</title>
+</head>
+<body>
+	<div id="wrapper">
+		<div id="m_bg"></div>
+		<header>
+			<div id="header">
+				<p><img src="images/mobile/list.jpg" alt="목록"></p>
+				<h1><a href="m.index.html"><img src="images/mobile/home.jpg" alt="홈"></a></h1>
+				<form>
+					<input type="text">
+					<button><img src="images/mobile/search.png" alt="검색"></button>
+				</form>
+				<p><img src="images/mobile/loca.jpg" alt="가까운 도서관"></p>
+				<p><img src="images/mobile/mypage.jpg" alt="내서재"></p>	
+				<ul>
+					<li class="this"><a href="m.search04_01.html">추천 도서</a></li>
+					<li><a href="m.search04_02.html">신착 도서</a></li>
+					<li><a href="m.search04_03.html">인기 도서</a></li>
+					<li><a href="m.search04_04.html">특화 자료</a></li>
+				</ul>			
+			</div>
+		</header>
+
+		<div id="menu">
+			<p><img src="images/mobile/x.jpg" alt="닫기"></p>
+			<ul id="lnb">
+				<li><a href="#">로그인</a></li>
+				<li><a href="#">회원 가입</a></li>
+			</ul>
+			<p><a href="#">처음 방문하셨나요?</a></p>
+			<ul id="sns">
+				<li><a href="#" target="_blank">
+					<dl>
+						<dt><img src="images/mobile/sns_f.png" alt="페이스북"></dt>
+						<dd>페이스북</dd>
+					</dl>					
+				</a></li>
+				<li><a href="#" target="_blank">
+					<dl>
+						<dt><img src="images/mobile/sns_n.png" alt="네이버"></dt>
+						<dd>네이버</dd>
+					</dl>					
+				</a></li>
+				<li><a href="#" target="_blank">
+					<dl>
+						<dt><img src="images/mobile/sns_t.png" alt="트위터"></dt>
+						<dd>트위터</dd>
+					</dl>					
+				</a></li>
+				<li><a href="#" target="_blank">
+					<dl>
+						<dt><img src="images/mobile/sns_i.png" alt="인스타그램"></dt>
+						<dd style="letter-spacing:-1.5;">인스타그램</dd>
+					</dl>					
+				</a></li>
+			</ul>
+			<div id="snb">
+				<ul>
+					<li>
+						<dl>
+							<dt><img src="images/mobile/snb-search.png" alt="자료 검색"></dt>
+							<dd>자료 검색</dd>
+						</dl>
+					</li>
+					<li>
+						<dl>
+							<dt><img src="images/mobile/snb-party.png" alt="소통·참여"></dt>
+							<dd>소통·참여</dd>
+						</dl>
+					</li>
+					<li>
+						<dl>
+							<dt><img src="images/mobile/snb-guide.png" alt="도서관 이용"></dt>
+							<dd>도서관 이용</dd>
+						</dl>
+					</li>
+					<li>
+						<dl>
+							<dt><img src="images/mobile/snb-ebook.png" alt="전자도서관"></dt>
+							<dd>전자도서관</dd>
+						</dl>
+					</li>
+					<li>
+						<dl>
+							<dt><img src="images/mobile/snb-news.png" alt="도서관 소식"></dt>
+							<dd>도서관 소식</dd>
+						</dl>
+					</li>
+					<li>
+						<dl>
+							<dt><img src="images/mobile/snb-intro.png" alt="도서관 소개"></dt>
+							<dd>도서관 소개</dd>
+						</dl>
+					</li>
+				</ul>
+				<div><!------------------자료 검색------------------->
+					<ul>
+						<li class="s_snb"><a href="#">시립도서관 검색</a></li>
+						<li class="s_snb">지역도서관 검색</li>
+						<li class="s_snb"><a href="#">WEB-DB</a></li>
+						<li class="s_snb">책! 책! 책!<u>&gt;</u>
+							<ul class="ss_snb">
+								<li><a href="m.search04_01.html">추천 도서</a></li>
+								<li><a href="m.search04_02.html">신착 도서</a></li>
+								<li><a href="m.search04_03.html">인기 도서</a></li>
+								<li><a href="m.search04_04.html">특화 자료</a></li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+				<div><!------------------소통·참여------------------->
+					<ul>
+						<li class="s_snb"><a href="m.comu01_01.html">독서문화활동</a></li>
+						<li class="s_snb"><a href="#">자주하는 질문</a></li>
+						<li class="s_snb"><a href="#">커뮤니티</a></li>
+						<li class="s_snb"><a href="#">납본·기증</a></li>
+						<li class="s_snb"><a href="#">신청</a></li>
+						<li class="s_snb"><a href="#">설문조사</a></li>
+					</ul>
+				</div>
+				<div><!------------------도서관 이용------------------->
+					<ul>
+						<li class="s_snb"><a href="m.guide01_01.html">이용 안내</li></li>
+						<li class="s_snb"><a href="#">자료실 이용</a></li>
+						<li class="s_snb"><a href="#">도서관 서비스</a></li>
+						<li class="s_snb"><a href="#">모바일 서비스</a></li>
+						<li class="s_snb"><a href="#">FAQ</a></li>
+					</ul>
+				</div>
+				<div><!------------------전자도서관------------------->
+					<ul>
+						<li class="s_snb"><a href="m.elibrary01.html">전자책</a></li>
+						<li class="s_snb"><a href="m.elibrary02.html">오디오북</a></li>
+						<li class="s_snb"><a href="m.elibrary03.html">동영상북</a></li>
+						<li class="s_snb"><a href="m.elibrary04.html">E-러닝</a></li>
+						<li class="s_snb"><a href="m.elibrary05.html">키즈북</a></li>
+					</ul>
+				</div>
+				<div><!------------------도서관 소식------------------->
+					<ul>
+						<li class="s_snb"><a href="#">공지사항</a></li>
+						<li class="s_snb"><a href="#">공개 자료실</a></li>
+						<li class="s_snb"><a href="m.news03.html">도서관 갤러리</a></li>
+					</ul>
+				</div>
+				<div><!------------------도서관 소개------------------->
+					<ul>
+						<li class="s_snb"><a href="#">연혁</a></li>
+						<li class="s_snb"><a href="#">조직도</a></li>
+						<li class="s_snb"><a href="#">현황 안내</a></li>
+						<li class="s_snb"><a href="#">운영 규정</a></li>
+						<li class="s_snb"><a href="m.produce05.html">오시는 길</a></li>
+					</ul>
+				</div>
+			</div>			
+		</div>	
+
+		<div class="plate">
+			<ul id="tab">
+				<li>일반 도서</li>
+				<li>어린이 도서</li>
+			</ul>
+			<section><!--------일반 도서--------->
+				<div class="row">
+					<dl>
+						<dt><a href="#"><img src="images/rec_b02.jpg" alt="퇴근길 인문학 수업: 관계"></a></dt>
+						<dd><a href="#">퇴근길 인문학 수업: 관계</a></dd>
+						<dd>백상경제연구원 글</dd>
+						<dd>한빛비즈 / 2019</dd>
+						<dd>[중앙] 종합실</dd>
+						<dd>예약 가능</dd>
+						<dd>중앙도서관</dd>
+					</dl>
+					<dl>
+						<dt><a href="#"><img src="images/rec_b03.jpg" alt="듣는 독서로 완성하는 아이의 공부 내공"></a></dt>
+						<dd><a href="#">듣는 독서로 완성하는 아이…</a></dd>
+						<dd>김수현 글</dd>
+						<dd>청림라이프 / 2019</dd>
+						<dd>[중앙] 종합실</dd>
+						<dd>예약 가능</dd>
+						<dd>중앙도서관</dd>
+					</dl>
+					<dl>
+						<dt><a href="#"><img src="images/rec_b04.jpg" alt="퇴근 후 1시간 독서법"></a></dt>
+						<dd><a href="#">퇴근 후 1시간 독서법</a></dd>
+						<dd>정소장 글</dd>
+						<dd>다스북스 / 2019</dd>
+						<dd>[중앙] 종합실</dd>
+						<dd>대출 가능</dd>
+						<dd>중앙도서관</dd>
+					</dl>
+					<dl>
+						<dt><a href="#"><img src="images/rec_b05.jpg" alt="도서관에 간 외계인"></a></dt>
+						<dd><a href="#">도서관에 간 외계인</a></dd>
+						<dd>박미숙, 최향숙 글; 김중석 그림</dd>
+						<dd>킨더랜드 / 2018</dd>
+						<dd>[중앙] 종합실</dd>
+						<dd>대출 가능</dd>
+						<dd>중앙도서관</dd>
+					</dl>
+					<dl>
+						<dt><a href="#"><img src="images/rec_b06.jpg" alt="당신이 나와 같은 시간 속에 있기를"></a></dt>
+						<dd><a href="#">당신이 나와 같은 시간 속에…</a></dd>
+						<dd>이미화 글, 사진</dd>
+						<dd>상상출판 / 2018</dd>
+						<dd>[중앙] 종합실</dd>
+						<dd>대출 가능</dd>
+						<dd>중앙도서관</dd>
+					</dl>
+				</div>
+				<div class="row">
+					<dl>
+						<dt><a href="#"><img src="images/rec_b07.jpg" alt="이토록 어여쁜 그림책"></a></dt>
+						<dd><a href="#">이토록 어여쁜 그림책</a></dd>
+						<dd>이상희 외</dd>
+						<dd>이봄 / 2017</dd>
+						<dd>[중앙] 종합실</dd>
+						<dd>예약 가능</dd>
+						<dd>중앙도서관</dd>
+					</dl>
+					<dl>
+						<dt><a href="#"><img src="images/rec_b08.jpg" alt="여행의 이유"></a></dt>
+						<dd><a href="#">여행의 이유</a></dd>
+						<dd>김영하 글</dd>
+						<dd>문학동네 / 2019</dd>
+						<dd>[중앙] 종합실</dd>
+						<dd>예약 가능</dd>
+						<dd>중앙도서관</dd>
+					</dl>
+					<dl>
+						<dt><a href="#"><img src="images/rec_b09.jpg" alt="위대한 발명의 실수투성이 역사"></a></dt>
+						<dd><a href="#">위대한 발명의 실수투성이…</a></dd>
+						<dd>샬럿 폴츠 존스 글; 존 오브라이언 그림</dd>
+						<dd>보물창고 / 2018</dd>
+						<dd>[중앙] 종합실</dd>
+						<dd>대출 가능</dd>
+						<dd>중앙도서관</dd>
+					</dl>
+					<dl>
+						<dt><a href="#"><img src="images/rec_b10.jpg" alt="일간 이슬아 수필집"></a></dt>
+						<dd><a href="#">도서관에 간 외계인</a></dd>
+						<dd>이슬아 글</dd>
+						<dd>헤엄 / 2018</dd>
+						<dd>[중앙] 종합실</dd>
+						<dd>대출 가능</dd>
+						<dd>중앙도서관</dd>
+					</dl>
+					<dl>
+						<dt><a href="#"><img src="images/rec_b11.jpg" alt="다산의 마지막 공부"></a></dt>
+						<dd><a href="#">다산의 마지막 공부</a></dd>
+						<dd>조윤제 글</dd>
+						<dd>청림 / 2018</dd>
+						<dd>[중앙] 종합실</dd>
+						<dd>대출 가능</dd>
+						<dd>중앙도서관</dd>
+					</dl>
+				</div>
+				<div class="row">
+					row3
+				</div>
+				<span class="more" id="more1"><img src="images/mobile/more.png"></span>			
+			</section>
+			<section><!--------어린이 도서--------->
+				<div class="row">
+					<dl>
+						<dt><a href="#"><img src="images/rec_b01.jpg" alt="너를 보면"></a></dt>
+						<dd><a href="#">너를 보면</a></dd>
+						<dd>최숙희 글, 그림</dd>
+						<dd>웅진 주니어 / 2019</dd>
+						<dd>[중앙] 아동실</dd>
+						<dd>예약 불가</dd>
+						<dd>중앙도서관</dd>
+					</dl>
+					<dl>
+						<dt><a href="#"><img src="images/rec_b01_c02.jpg" alt="푸른 사자 와니니"></a></dt>
+						<dd><a href="#">푸른 사자 와니니</a></dd>
+						<dd>이현 글; 오윤화 그림</dd>
+						<dd>창비 / 2015</dd>
+						<dd>[중앙] 아동실</dd>
+						<dd>예약 가능</dd>
+						<dd>중앙도서관</dd>
+					</dl>
+					<dl>
+						<dt><a href="#"><img src="images/rec_b01_c03.jpg" alt="엄마 몰래 탈출하기"></a></dt>
+						<dd><a href="#">엄마 몰래 탈출하기</a></dd>
+						<dd>김명수; 김민령; 김옥; 김일광; 김종렬; …</dd>
+						<dd>창비 / 2013</dd>
+						<dd>[중앙] 아동실</dd>
+						<dd>대출 가능</dd>
+						<dd>중앙도서관</dd>
+					</dl>
+					<dl>
+						<dt><a href="#"><img src="images/rec_b01_c04.jpg" alt="서커스 대소동"></a></dt>
+						<dd><a href="#">서커스 대소동</a></dd>
+						<dd>찰스 오그든 글; 릭 카튼 그림; 윤명 옮김</dd>
+						<dd>마술피리:초록개구리 / 2014</dd>
+						<dd>[중앙] 아동실</dd>
+						<dd>대출 가능</dd>
+						<dd>중앙도서관</dd>
+					</dl>
+					<dl>
+						<dt><a href="#"><img src="images/rec_b01_c05.jpg" alt="13층 나무집"></a></dt>
+						<dd><a href="#">13층 나무집</a></dd>
+						<dd>앤디 그리피스 글; 테리 덴톤 그림</dd>
+						<dd>시공주니어 / 2019</dd>
+						<dd>[중앙] 아동실</dd>
+						<dd>대출 가능</dd>
+						<dd>중앙도서관</dd>
+					</dl>
+				</div>
+				<div class="row">
+					<dl>
+						<dt><a href="#"><img src="images/rec_b01_c06.jpg" alt="너를 보면"></a></dt>
+						<dd><a href="#">너를 보면</a></dd>
+						<dd>최숙희 글, 그림</dd>
+						<dd>웅진 주니어 / 2019</dd>
+						<dd>[중앙] 아동실</dd>
+						<dd>예약 불가</dd>
+						<dd>중앙도서관</dd>
+					</dl>
+					<dl>
+						<dt><a href="#"><img src="images/rec_b01_c07.jpg" alt="푸른 사자 와니니"></a></dt>
+						<dd><a href="#">푸른 사자 와니니</a></dd>
+						<dd>이현 글; 오윤화 그림</dd>
+						<dd>창비 / 2015</dd>
+						<dd>[중앙] 아동실</dd>
+						<dd>예약 가능</dd>
+						<dd>중앙도서관</dd>
+					</dl>
+					<dl>
+						<dt><a href="#"><img src="images/rec_b01_c08.jpg" alt="엄마 몰래 탈출하기"></a></dt>
+						<dd><a href="#">엄마 몰래 탈출하기</a></dd>
+						<dd>김명수; 김민령; 김옥; 김일광; 김종렬; …</dd>
+						<dd>창비 / 2013</dd>
+						<dd>[중앙] 아동실</dd>
+						<dd>대출 가능</dd>
+						<dd>중앙도서관</dd>
+					</dl>
+					<dl>
+						<dt><a href="#"><img src="images/rec_b01_c09.jpg" alt="서커스 대소동"></a></dt>
+						<dd><a href="#">서커스 대소동</a></dd>
+						<dd>찰스 오그든 글; 릭 카튼 그림; 윤명 옮김</dd>
+						<dd>마술피리:초록개구리 / 2014</dd>
+						<dd>[중앙] 아동실</dd>
+						<dd>대출 가능</dd>
+						<dd>중앙도서관</dd>
+					</dl>
+					<dl>
+						<dt><a href="#"><img src="images/rec_b01_c10.jpg" alt="13층 나무집"></a></dt>
+						<dd><a href="#">13층 나무집</a></dd>
+						<dd>앤디 그리피스 글; 테리 덴톤 그림; 신수진 옮김</dd>
+						<dd>시공주니어 / 2019</dd>
+						<dd>[중앙] 아동실</dd>
+						<dd>대출 가능</dd>
+						<dd>중앙도서관</dd>
+					</dl>
+				</div>
+				<div class="row">
+					row3
+				</div>
+				<div class="row">
+					row4
+				</div>				
+				<span class="more" id="more2"><img src="images/mobile/more.png"></span>
+			</section>						
+		</div>
+		
+		<footer>			
+			<div class="row-0">
+				<div class="fnb row-5">
+					<ul>
+						<li><a href="#">도서관 연혁</a></li>
+						<li><a href="#">개인정보 처리방침</a></li>
+						<li><a href="#">홈페이지 이용약관</a></li>
+					</ul>
+				</div>
+				<div class="fav row-5">
+					<ul>
+						<li><a href="#">수원시 도서관 사업소<span class="icon-down-open-mini"></span></a></li>
+						<li><a href="#">도서관 바로 가기<span class="icon-down-open-mini"></span></a></li>
+					</ul>						
+				</div>
+				<div class="address row-5">
+					<h3><a href="index.html"><img src="images/f_logo.png" alt="로고"></a></h3>
+					<address>
+						Copyright by 수원시 도서관사업소 All Right Reserved. 
+					</address>						
+				</div>				
+			</div>	
+		</footer>
+
+		<div class="bottom-fixed">
+			<img src="images/mobile/undo.png" alt="이전 페이지로" id="undo">
+			<img src="images/mobile/top.png" alt="맨위로" id="top">
+		</div>
+		
+	</div>	
+</body>
+</html>

@@ -1,0 +1,632 @@
+<script type="text/javascript"> //모바일 접속
+	
+	var mobileKeyWords = new Array('iPhone', 'iPod', 'BlackBerry', 'Android', 'Windows CE', 'LG', 'MOT', 'SAMSUNG', 'SonyEricsson');
+	for (var word in mobileKeyWords){
+	    if (navigator.userAgent.match(mobileKeyWords[word]) != null){
+	        location.href = "http://lapuger.dothome.co.kr/suwonlib/m.comu01_01.html";
+	        break;
+	    }
+	}
+	
+</script>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<!--------------------------meta-------------------------->
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<meta name="keword" content="검색어">
+		<meta name="description" content="사이트소개">
+
+	<!--------------------------script-------------------------->
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+		<script type="text/javascript">/**********주 메뉴 gnb 슬라이드 다운**********/
+			$(function(){
+				$('.sub_gnb').hide();
+				$('.sub_gnb ul').eq($(this).index()).css({'background-color':'#fff'});
+				$('.sub_gnb ul').mouseenter(function(){
+					$(this).css({'background-color':'#f8f8f8'});
+					$('.gnb li').eq($(this).index()).css({'border-bottom':'5px solid #c68335'});
+				}).mouseleave(function(){
+					$(this).css({'background-color':'#fff'});
+					$('.gnb li').eq($(this).index()).css({'border-bottom':'5px solid transparent'});
+					$('.gnb .select').css({'border-bottom':'5px solid #c68335'});
+				});
+				$('.gnb li').mouseenter(function(){
+					$(this).css({'border-bottom':'5px solid #c68335'});
+					$('.sub_gnb').stop().slideDown();
+					$('.sub_gnb ul').eq($(this).index()).css({'background-color':'#f8f8f8'});					
+				}).mouseleave(function(){
+					$(this).css({'border-bottom':'5px solid transparent'});
+					$('.sub_gnb').stop().slideUp();
+					$('.sub_gnb ul').eq($(this).index()).css({'background-color':'#fff'});
+					$('.gnb .select').css({'border-bottom':'5px solid #c68335'});
+				});	
+				$('.sub_gnb').mouseenter(function(){	
+					$('.sub_gnb').stop().slideDown();
+					}).mouseleave(function(){	
+					$('.sub_gnb').stop().slideUp();	
+				});			
+			});
+		</script>
+
+		<script type="text/javascript">/**********작은 메뉴 snb 드롭 다운**********/
+			$(function(){				
+				$('.dropdown ul').hide();
+				$('.dropdown').mouseenter(function(){					
+					$(this).find('ul').stop().slideDown().css({
+						'border':'1px solid #777','border-radius':'6px'
+					})
+				}).mouseleave(function(){
+					$(this).css({'border':'1px solid transparent'});
+					$(this).find('ul').stop().slideUp();
+				});
+			});			
+		</script>	
+
+		<script type="text/javascript">/**********tab div 넘기기**********/
+			$(function(){
+				$('.block div').hide();
+				$('.block div').eq(1).show();		
+				$('.tab').find('section').hide();
+				/*$('.tab_'+2).find('section').first().show();			*/		
+				$('#tab li:nth-child(2)').addClass('on');						
+				$('#tab li').click(function(){
+					$('.block div').hide();
+					$('#tab li').removeClass('on');
+					$(this).addClass('on');
+					$('.block div').eq($(this).index()).show();	
+					var num = $(this).index();	
+					$('.tab_'+num+1).find('section').first().show();		
+				});	
+				/*
+				$('#control li:first-child').addClass('select');	
+				$('#control li').click(function(){
+					$('#control li').removeClass('select');
+					$(this).addClass('select');					
+					var num = $('#control li').index();
+					$('.tab').find('section').hide();
+					$('.tab>section').eq(num).show();		
+				});	*/			
+			});
+		</script>
+<!--
+		<script type="text/javascript">/**********강좌 페이지 넘기기**********/
+			$(function(){
+				$('.tab>section').hide();
+				$('.tab>section').first().show();
+				$('#control li:first-child').addClass('select');
+				$('#control li').click(function(){
+					$(window).scrollTop(0,0);
+					$('.tab>section').hide();
+					$('#control li').removeClass('select');
+					$(this).addClass('select');
+					$('.tab>section').eq($(this).index()).show();				
+				});
+			});
+		</script>
+-->
+
+	<script type="text/javascript"> /**********footer banner 넘기기**********/
+   $(document).ready(function(){ 
+        var list = $("#banner-slide");
+        var showNum = 12;
+        var num = 0;
+        var total = $(">li", list).length;
+        var liWidth = $("li:first", list).width();
+        var copyObj = $(">li:lt("+showNum+")", list).clone();
+        list.append(copyObj);
+        $("#right-f").on("click", function(){
+            if(num == total){ 
+                num = 0; 
+                list.css("margin-left",num); 
+            }
+            num++; 
+            list.stop().animate({marginLeft:-liWidth*num+"px"},500);
+            return false;
+        });
+        
+        
+        $("#left-f").on("click", function(){
+          if(num == 0){    
+              num = total; 
+              list.css("margin-left", -num*liWidth+"px");
+          }
+          num--;
+          list.stop().animate({marginLeft:-liWidth*num+"px"},500);
+          return false;
+        });
+    });  
+	</script>
+
+
+	<!--------------------------link-------------------------->
+		<link rel="icon" type="image/x-icon" href="images/www.png"><!--인터넷창에 표시되는 로고 이미지-->
+		<link rel="stylesheet" type="text/css" href="css/comu01.css">
+		<link rel="stylesheet" type="text/css" href="fontello/css/fontello.css">
+
+	<!--------------------------style-------------------------->
+		<style type="text/css">
+			* {margin:0; padding:0; box-sizing:border-box;}
+			body {font:normal 16px '나눔바른고딕'; color:#222; line-height:1.8;}
+			/*body::-webkit-scrollbar {display: none;}*/
+			img {vertical-align:top;}
+			a{text-decoration:none;}
+			li{list-style:none;}						
+			.gnb li.select{border-bottom:5px solid #c68335;}
+			#tab li.on{background-color:#c78435; border:1px solid transparent;}
+			#control li.select{background-color:#222; color:#fff;}
+		</style>
+
+	<!--------------------------font-------------------------->
+		<style>
+			@font-face {
+			  font-family: KPBatang;
+			  src: url(font/KoPubWorldBatangMedium.woff);
+			  src: url(font/KOPUBWORLD BATANG MEDIUM.TTF.eot);
+			}
+			@font-face {
+			  font-family: KPDotum;
+			  src: url(font/KoPubWorldDotumMedium.woff);
+			  src: url(font/KOPUBWORLD DOTUM MEDIUM.TTF.eot);
+			}
+		</style>
+
+	<title>중앙도서관</title>
+</head>
+
+<body>
+	<div id="wrapper">
+		<header>
+			<div class="hnb">
+				<ul >
+					<li><a href="#">책나루(무인) 도서관</a></li>
+					<li><a href="#">희망도서 서비스</a></li>
+					<li><a href="#">자원봉사 신청</a></li>
+					<li><a href="#">디지털코너 예약</a></li>
+					<li><a href="#">도서관 체험교실</a></li>
+					<li><a href="#">사이트 맵</a></li>
+				</ul>
+			</div>
+			<div class="snb">
+				<h1><a href="index.html"><img src="images/logo_jlib.gif" alt="홈" title="홈"></a></h1>
+				<form>
+					<input type="text">
+					<button class="icon-search"></button>
+				</form>
+				<ul class="lnb">
+					<li><a href="#">로그인</a></li>
+					<li><a href="#">회원가입</a></li>					
+					<li class="dropdown"><a href="#">
+						SNS<span class="icon-down-open-mini">&nbsp;</span>
+						<ul>
+						  <li><a href="#">페이스북</a></li>
+						  <li><a href="#">트위터</a></li>
+						  <li><a href="#">인스타그램</a></li>
+					 </ul>
+					</a></li>
+					<li class="dropdown"><a href="#">
+					Language<span class="icon-down-open-mini">&nbsp;</span>
+					<ul>
+						 <li><a href="#">한국어</a></li>
+						 <li><a href="#">영어</a></li>
+					</ul>
+					</a></li>												
+				</ul>								
+			</div>
+			<div>
+				<ol class="gnb">
+					<li><a href="#">자료 검색</a></li>
+					<li class="select"><a href="#">소통·참여</a></li>
+					<li><a href="#">도서관 이용</a></li>
+					<li><a href="#">전자도서관</a></li>
+					<li><a href="#">도서관 소식</a></li>
+					<li><a href="#">도서관 소개</a></li>
+				</ol>
+				<div class="sub_gnb">
+					<ul class="s_1">
+						<li><a href="#">시립도서관 검색</a></li>
+						<li><a href="#">지역도서관 검색</a></li>
+						<li><a href="#">WEB-DB</a></li>
+						<li><a href="search04.html">책! 책! 책!</a></li>
+					</ul>
+					<ul class="s_2">
+						<li><a href="comu01.html">독서문화활동</a></li>
+						<li><a href="#">자주하는 질문</a></li>
+						<li><a href="#">커뮤니티</a></li>
+						<li><a href="#">납본·기증</a></li>
+						<li><a href="#">신청</a></li>
+						<li><a href="#">설문조사</a></li>
+					</ul>
+					<ul class="s_3">
+						<li><a href="guide01.html">이용 안내</a></li>
+						<li><a href="#">자료실 이용</a></li>
+						<li><a href="#">도서관 서비스</a></li>
+						<li><a href="#">모바일 서비스</a></li>
+						<li><a href="#">FAQ</a></li>
+					</ul>
+					<ul class="s_4">
+						<li><a href="elibrary01.html">전자책</a></li>
+						<li><a href="elibrary02.html">오디오 북</a></li>
+						<li><a href="elibrary03.html">동영상 북</a></li>
+						<li><a href="elibrary04.html">E-러닝</a></li>
+						<li><a href="elibrary05.html">키즈북</a></li>
+					</ul>
+					<ul class="s_5">
+						<li><a href="#">공지사항</a></li>
+						<li><a href="#">공개 자료실</a></li>
+						<li><a href="news03.html">도서관 갤러리</a></li>
+					</ul>
+					<ul class="s_6">
+						<li><a href="#">연혁</a></li>
+						<li><a href="#">조직도</a></li>
+						<li><a href="#">현황 안내</a></li>
+						<li><a href="#">운영 규정</a></li>
+						<li><a href="produce05.html">오시는 길</a></li>
+					</ul>
+				</div>							
+			</div>
+		</header>
+
+		<div class="row nav_bar">
+			<a href="index.html"><img src="images/home.png" alt="홈 화면"></a><img src="images/nav_b.png" alt="구분선">
+			<a href="#">소통·참여</a><img src="images/nav_b.png" alt="구분선">
+			<a href="comu01.html">독서문화활동</a>			
+		</div>
+
+		<div class="row block activity">
+			<h2><a href="comu01.html">독서문화활동</a></h2>
+			<ul id="tab">
+				<li class="front">선경</li>
+				<li class="front">중앙</li>
+				<li class="front">창룡</li>
+				<li class="front">화서다산</li>
+				<li class="front">호매실</li>
+				<li class="front">서수원</li>
+				<li class="front">한림</li>
+				<li class="front">버드내</li>
+				<li class="front">북수원</li>
+				<li class="front">대추골</li>
+				<li class="front">일월</li>
+				<li class="back">광교홍재</li>
+				<li class="back">영통</li>
+				<li class="back">태장마루</li>
+				<li class="back">광교푸른숲</li>
+				<li class="back">매여울</li>
+				<li class="back">망포글빛</li>
+				<li class="back">슬기샘</li>
+				<li class="back">지혜샘</li>
+				<li class="back">바른샘</li>
+			</ul>
+			<dl>
+				<dt>독서문화 활동 신청 시 유의사항</dt>
+				<dd>강좌명을 클릭하시면 신청할 수 있으며, 로그인 후 이용 가능합니다.</dd>
+				<dd>신청자의 인적사항(성명, 연락처, 주소)을 정확하게 확인하시고, 연락처가 부정확할 시 참여가 제한될 수 있습니다.(사전연락 누락)</dd>
+				<dd>인적사항은 「마이페이지→회원정보수정」에서 수정 가능합니다.</dd>
+				<dd><strong>수강 취소 시에는 반드시 사전 연락해 주시기 바라며, 취소없이 불참 시 다음 프로그램 참여가 제한될 수 있습니다.</strong></dd>
+				<dd>유선 문의 : 228-3542</dd>
+			</dl>
+			<p>
+				<strong>※ 아이콘이 활성화된 접수 방법으로 신청 가능 : <img src="images/comu-icon01.png" alt="인터넷">인터넷&nbsp;&nbsp;<img src="images/comu-icon02.png" alt="전화">전화&nbsp;&nbsp;<img src="images/comu-icon03.png" alt="방문">방문&nbsp;&nbsp;<img src="images/comu-icon04.png" alt="다수명">다수명</strong>
+				<span><a href="#">접수현황 조회<img src="images/left_tri_white_s.png" alt="바로가기"></a></span>				
+			</p>
+			
+			<div class="tab tab_1">
+				<section>
+					선경
+				</section>
+			</div>
+			<div class="tab tab_2">	
+				<section>								
+					<table>
+						<tr>
+							<th>강좌명</th>
+							<th>교육기간/요일</th>
+							<th>시간</th>
+							<th>대상</th>
+							<th>장소</th>
+							<th>신청/정원</th>
+							<th>접수방법</th>
+							<th>현황</th>
+						</tr>
+						<tr>
+							<td><a href="#">오순택 작가초청 강연회</a></td>
+							<td>2019.9.19/목</td>
+							<td>10:00~12:00</td>
+							<td>일반</td>
+							<td>2층 강의실</td>
+							<td>4/40</td>
+							<td><img src="images/comu-icon01.png" alt="인터넷"><img src="images/comu-icon02.png" alt="전화"><img src="images/comu-icon03.png" alt="방문"><img src="images/comu-icon04-g.png" alt="다수명"></td>
+							<td>마감</td>
+						</tr>
+						<tr>
+							<td><a href="#">2019년 여름방학특강(코딩아, 놀자)</a></td>
+							<td>2019.8.12~8.16/월~금<br />(광복절[목] 제외)</td>
+							<td>09:30~12:00</td>
+							<td>초4~6학년</td>
+							<td>2층 강의실</td>
+							<td>22/25</td>
+							<td><img src="images/comu-icon01.png" alt="인터넷"><img src="images/comu-icon02-g.png" alt="전화"><img src="images/comu-icon03-g.png" alt="방문"><img src="images/comu-icon04-g.png" alt="다수명"></td>
+							<td>마감</td>
+						</tr>
+						<tr>
+							<td><a href="#">2019년 여름독서교실(그림책 놀이터)</a></td>
+							<td>2019.8.6~8.9/화~금</td>
+							<td>09:30~12:00</td>
+							<td>초1~3학년</td>
+							<td>2층 강의실</td>
+							<td>29/30</td>
+							<td><img src="images/comu-icon01.png" alt="인터넷"><img src="images/comu-icon02-g.png" alt="전화"><img src="images/comu-icon03-g.png" alt="방문"><img src="images/comu-icon04-g.png" alt="다수명"></td>
+							<td>마감</td>
+						</tr>
+						<tr>
+							<td><a href="#">실용문인화교실(심화반)</a></td>
+							<td>2019.3.5~11.12/매주 화</td>
+							<td>10:00~12:00</td>
+							<td>일반(50세 이상)</td>
+							<td>2층 강의실</td>
+							<td>0/30</td>
+							<td><img src="images/comu-icon01.png" alt="인터넷"><img src="images/comu-icon02.png" alt="전화"><img src="images/comu-icon03.png" alt="방문"><img src="images/comu-icon04-g.png" alt="다수명"></td>
+							<td>마감</td>
+						</tr>
+						<tr>
+							<td><a href="#">실용문인화교실(초급반)</a></td>
+							<td>2019.3.6~11.13/매주 수</td>
+							<td>10:00~12:00</td>
+							<td>일반(50세 이상)</td>
+							<td>2층 강의실</td>
+							<td>3/30</td>
+							<td><img src="images/comu-icon01.png" alt="인터넷"><img src="images/comu-icon02.png" alt="전화"><img src="images/comu-icon03.png" alt="방문"><img src="images/comu-icon04-g.png" alt="다수명"></td>
+							<td>마감</td>
+						</tr>
+						<tr>
+							<td><a href="#">행복한 글쓰기</a></td>
+							<td>2019.3.7~11.14/매주 목</td>
+							<td>10.00~12:00</td>
+							<td>일반(50세 이상)</td>
+							<td>2층 강의실</td>
+							<td>2/40</td>
+							<td><img src="images/comu-icon01.png" alt="인터넷"><img src="images/comu-icon02.png" alt="전화"><img src="images/comu-icon03.png" alt="방문"><img src="images/comu-icon04-g.png" alt="다수명"></td>
+							<td>마감</td>
+						</tr>
+						<tr>
+							<td><a href="#">2019 중앙도서관 겨울방학특강(과학)</a></td>
+							<td>2019.1.22~1.25/화~금</td>
+							<td>09:30~12:00</td>
+							<td>초4~6학년</td>
+							<td>2층 강의실</td>
+							<td>26/30</td>
+							<td><img src="images/comu-icon01.png" alt="인터넷"><img src="images/comu-icon02.png" alt="전화"><img src="images/comu-icon03.png" alt="방문"><img src="images/comu-icon04-g.png" alt="다수명"></td>
+							<td>마감</td>
+						</tr>
+						<tr>
+							<td><a href="#">2018년 중앙도서관 겨울독서교실(바른마음)</a></td>
+							<td>2019.1.15~1.18/화~금</td>
+							<td>09:30~12:00</td>
+							<td>초1~3학년</td>
+							<td>2층 강의실</td>
+							<td>0/40</td>
+							<td><img src="images/comu-icon01.png" alt="인터넷"><img src="images/comu-icon02.png" alt="전화"><img src="images/comu-icon03.png" alt="방문"><img src="images/comu-icon04-g.png" alt="다수명"></td>
+							<td>마감</td>
+						</tr>
+						<tr>
+							<td><a href="#">차윤옥 작가 초청 강연회</a></td>
+							<td>2018.9.20/목</td>
+							<td>10:00~12:00</td>
+							<td>일반</td>
+							<td>2층 강의실</td>
+							<td>0/40</td>
+							<td><img src="images/comu-icon01.png" alt="인터넷"><img src="images/comu-icon02.png" alt="전화"><img src="images/comu-icon03.png" alt="방문"><img src="images/comu-icon04-g.png" alt="다수명"></td>
+							<td>마감</td>
+						</tr>
+						<tr>
+							<td><a href="#">(대기) 2018년 중앙도서관 여름방학특강</a></td>
+							<td>2018.8.13~8.17/월~금</td>
+							<td>09:30~12:00</td>
+							<td>초4~6학년</td>
+							<td>2층 강의실</td>
+							<td>2/5</td>
+							<td><img src="images/comu-icon01.png" alt="인터넷"><img src="images/comu-icon02.png" alt="전화"><img src="images/comu-icon03.png" alt="방문"><img src="images/comu-icon04-g.png" alt="다수명"></td>
+							<td>마감</td>
+						</tr>
+						<tr>
+							<td><a href="#">(대기) 2018년 중앙도서관 여름독서교실</a></td>
+							<td>2018.8.7~8.10/화~금</td>
+							<td>09:30~12:00</td>
+							<td>초4~6학년</td>
+							<td>2층 강의실</td>
+							<td>6/10</td>
+							<td><img src="images/comu-icon01.png" alt="인터넷"><img src="images/comu-icon02.png" alt="전화"><img src="images/comu-icon03.png" alt="방문"><img src="images/comu-icon04-g.png" alt="다수명"></td>
+							<td>마감</td>
+						</tr>
+						<tr>
+							<td><a href="#">2018년 중앙도서관 여름방학특강</a></td>
+							<td>2018.8.13~8.17/월~금</td>
+							<td>09:30~12:00</td>
+							<td>초4~6학년</td>
+							<td>2층 강의실</td>
+							<td>27/30</td>
+							<td><img src="images/comu-icon01.png" alt="인터넷"><img src="images/comu-icon02.png" alt="전화"><img src="images/comu-icon03.png" alt="방문"><img src="images/comu-icon04-g.png" alt="다수명"></td>
+							<td>마감</td>
+						</tr>
+						<tr>
+							<td><a href="#">2018년 중앙도서관 여름독서교실</a></td>
+							<td>2018.8.7~8.10/화~금</td>
+							<td>09:30~12:00</td>
+							<td>초1~3학년</td>
+							<td>2층 강의실</td>
+							<td>29/30</td>
+							<td><img src="images/comu-icon01.png" alt="인터넷"><img src="images/comu-icon02.png" alt="전화"><img src="images/comu-icon03.png" alt="방문"><img src="images/comu-icon04-g.png" alt="다수명"></td>
+							<td>마감</td>
+						</tr>
+						<tr>
+							<td><a href="#">멋글씨 캘리그라피</a></td>
+							<td>2018.5.4~6.22/매주 금</td>
+							<td>10:00~12:00</td>
+							<td>일반</td>
+							<td>2층 강의실</td>
+							<td>8/40</td>
+							<td><img src="images/comu-icon01.png" alt="인터넷"><img src="images/comu-icon02.png" alt="전화"><img src="images/comu-icon03.png" alt="방문"><img src="images/comu-icon04-g.png" alt="다수명"></td>
+							<td>마감</td>
+						</tr>
+						<tr>
+							<td><a href="#">&lt;치유의 글쓰기&gt; 수필가 우희정 초청강연회</a></td>
+							<td>2018.4.12/목</td>
+							<td>10:00~12:00</td>
+							<td>일반</td>
+							<td>2층 강의실</td>
+							<td>0/40</td>
+							<td><img src="images/comu-icon01.png" alt="인터넷"><img src="images/comu-icon02.png" alt="전화"><img src="images/comu-icon03.png" alt="방문"><img src="images/comu-icon04-g.png" alt="다수명"></td>
+							<td>마감</td>
+						</tr>
+					</table>						
+				</section>
+				<section>				
+					section-2								
+				</section>
+				<section>
+					section-3
+				</section>
+				<section>
+					section-4
+				</section>
+				<section>
+					section-5
+				</section>
+				<ul id="control">
+					<li>1</li>
+					<li>2</li>
+					<li>3</li>
+					<li>4</li>
+					<li>5</li>
+				</ul>				
+			</div>
+			<div class="tab tab_3">
+				<section>창룡</section>			
+			</div>
+			<div class="tab tab_4">
+				<section>화서다산</section>
+			</div>
+			<div class="tab tab_5">	
+				<section>호매실</section>	
+			</div>	
+			<div class="tab tab_6">	
+				<section>서수원</section>	
+			</div>
+			<div class="tab tab_7">	
+				<section>한림</section>	
+			</div>
+			<div class="tab tab_8">	
+				<section>버드내</section>	
+			</div>
+			<div class="tab tab_9">	
+				<section>북수원</section>	
+			</div>
+			<div class="tab tab_10">	
+				<section>대추골</section>
+			</div>
+			<div class="tab tab_11">	
+				<section>일월</section>
+			</div>
+			<div class="tab tab_12">	
+				<section>광교홍재</section>
+			</div>
+			<div class="tab tab_13">	
+				<section>영통</section>
+			</div>
+			<div class="tab tab_14">	
+				<section>태장마루</section>
+			</div>
+			<div class="tab tab_15">	
+				<section>광교푸른숲</section>
+			</div>
+			<div class="tab tab_16">	
+				<section>매여울</section>
+			</div>
+			<div class="tab tab_17">	
+				<section>망포글빛</section>
+			</div>
+			<div class="tab tab_18">	
+				<section>슬기샘</section>
+			</div>
+			<div class="tab tab_19">	
+				<section>지혜샘</section>
+			</div>
+			<div class="tab tab_20">	
+				<section>바른샘</section>
+			</div>
+		</div>
+
+		<footer>
+			<div class="banner-group">
+				<span id="left-f">&lt;</span>
+				<div class="banner-in">
+					<ul id="banner-slide">
+						<li><a href="http://suwon.go.kr" target="_blank" title="휴먼시티 수원시"><img src="images/banner01.gif" alt="휴먼시티 수원시"></a></li>
+						<li><a href="http://news.suwon.go.kr/" target="_blank" title="수원시 인터넷 신문"><img src="images/banner02.gif" alt="수원시 인터넷 신문"></a></li>
+						<li><a href="http://tv.suwon.go.kr/" target="_blank" title="수원 인터넷 방송"><img src="images/banner03.gif" alt="수원 인터넷 방송"></a></li>
+						<li><a href="http://www.nl.go.kr/nl/" target="_blank" title="국립 중앙도서관"><img src="images/banner05.gif" alt="국립 중앙도서관"></a></li>
+						<li><a href="http://www.minwon.go.kr/" target="_blank" title="민원24"><img src="images/banner07.gif" alt="민원24"></a></li>
+						<li><a href="http://nlcollection.nl.go.kr/" target="_blank" title="국립 중앙도서관 디지털 컬렉션"><img src="images/banner08.gif" alt="국립 중앙도서관 디지털 컬렉션"></a></li>
+						<li><a href="http://www.ecomoney.co.kr/" target="_blank" title=""><img src="images/banner09.gif" alt=""></a></li>
+						<li><a href="https://www.nlcy.go.kr/index.do" target="_blank" title=""><img src="images/banner11.gif" alt=""></a></li>
+						<li><a href="http://www.suwon.go.kr/sw-www/www01/www01-05/www01-05-01.jsp" target="_blank" title=""><img src="images/banner12.gif" alt=""></a></li>
+						<li><a href="http://news.suwon.go.kr/ebook/home/index.php" target="_blank" title=""><img src="images/banner14.gif" alt=""></a></li>
+						<li><a href="http://storytelling.nlcy.go.kr/DmhMain/DmhMainRecommendList.do" target="_blank" title=""><img src="images/banner15.gif" alt=""></a></li>
+						<li><a href="https://www.data4library.kr/" target="_blank" title=""><img src="images/banner17.gif" alt=""></a></li>
+					</ul>
+					<ul id="control-f">
+						<li>&nbsp;</li>
+						<li>&nbsp;</li>
+						<li>&nbsp;</li>
+						<li>&nbsp;</li>
+						<li>&nbsp;</li>
+						<li>&nbsp;</li>
+						<li>&nbsp;</li>
+						<li>&nbsp;</li>
+						<li>&nbsp;</li>
+						<li>&nbsp;</li>
+						<li>&nbsp;</li>
+						<li>&nbsp;</li>
+					</ul>
+				</div>				
+				<span id="right-f">&gt;</span>				
+			</div>
+			<div class="row-0">
+				<div class="fnb row-5">
+					<ul>
+						<li><a href="#">도서관 연혁</a></li>
+						<li><a href="#">개인정보 처리방침</a></li>
+						<li><a href="#">홈페이지 이용약관</a></li>
+					</ul>
+				</div>
+				<div class="fav row-5">
+					<ul>
+						<li><a href="#">수원시 도서관 사업소<span class="icon-down-open-mini"></span></a></li>
+						<li><a href="#">도서관 바로 가기<span class="icon-down-open-mini"></span></a></li>
+					</ul>						
+				</div>
+				<div class="address row-5">
+					<h3><a href="index.html"><img src="images/f_logo.png" alt="로고"></a></h3>
+					<address>
+						[16462] 경기도수원시 팔달구 팔달산로 318 (교동) <br />
+						전화: 031-228-4788 / 1899-3300 팩스 : 031-228-3745 <br />
+						Copyright by 수원시 도서관사업소 All Right Reserved. 
+					</address>						
+				</div>
+				<div class="counter row-5">
+					<dl>
+						<dt>오늘</dt>
+						<dd>60</dd>
+					</dl>
+					<dl>
+						<dt>전체</dt>
+						<dd>1,215,424</dd>
+					</dl>
+				</div>	
+			</div>	
+		</footer>
+	</div>	
+</body>
+</html>
